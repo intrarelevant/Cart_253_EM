@@ -14,8 +14,6 @@ function setup() {
  createCanvas(720, 1280);
 }
 
-}
-
 
 /**
  * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
