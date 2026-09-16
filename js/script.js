@@ -1,17 +1,18 @@
 /**
- * Title of Project
- * Author Name
+ * Challenge : Class 2 September 16th 2026
+ * Erica
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * In-course assignment challenge :)
  */
 
 "use strict";
 
 /**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
+ * Setup to create a canvas of (x, y)
 */
 function setup() {
+ createCanvas(720, 1280);
+}
 
 }
 
