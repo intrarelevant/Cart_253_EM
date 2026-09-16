@@ -16,9 +16,9 @@ function setup() {
 
 
 /**
- * Beautiful Pink Background
+ * Beautiful Pink Background and rectangle
 */
 function draw() {
  background(255, 100, 100);
- rect(200, 80, 240, 320);
+ ellipse(240, 300, 240, 240);
 }
