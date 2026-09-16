@@ -1,6 +1,6 @@
 /**
  * Challenge : Class 2 September 16th 2026
- * Erica
+ * Erica Mercier
  * 
  * In-course assignment challenge :)
  */
@@ -16,8 +16,9 @@ function setup() {
 
 
 /**
- * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
+ * Beautiful Pink Background
 */
 function draw() {
-
+ background(255, 100, 100);
+ rect(200, 80, 240, 320);
 }
