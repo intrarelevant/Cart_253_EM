@@ -6,7 +6,7 @@ This is E_M's coursework and journal for CART253; I'll be using this page as a r
 - [Course Journal](/journal.md)
 
 # Challenges
-- Class 2: [Course Journal](/Course2_Instructions/challenge/index.html)
+- Class 2: [My gorgeous landscape <3](/Course2_Instructions/challenge/index.html)
 - Class 1: this page
 
 
