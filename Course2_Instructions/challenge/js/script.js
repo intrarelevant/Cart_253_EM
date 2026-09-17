@@ -21,16 +21,11 @@ background(bg2)
 
 }
 
-
-
-
 function draw() {
 	drawSun();
 	drawHorizon();
     drawSilhouette();
     drawShadow();
-
-
 }
 
  function drawSun () {
@@ -66,7 +61,7 @@ push()
   push()
  fill(83, 59, 77);
  noStroke();
- ellipse(windowWidth/2, windowHeight*0.8, 50, 150);
+ ellipse(windowWidth/2.5, windowHeight*0.8, 50, 150);
  pop()
 }
 
@@ -75,15 +70,13 @@ push()
   push()
  fill(83, 59, 77,190);
  noStroke();
- ellipse(windowWidth/2, windowHeight*0.9, 50, 150);
+ ellipse(windowWidth/2.5, windowHeight*0.9, 50, 150);
  rotate(-45);
  pop()
 }
-
 
 function windowResized() {
         /*** keep elements proportional when the canvas is resized*/
   resizeCanvas(windowWidth, windowHeight);
   background(168, 204, 201)
-
 }
