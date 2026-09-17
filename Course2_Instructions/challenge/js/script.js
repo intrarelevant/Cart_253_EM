@@ -17,6 +17,8 @@ let bg1 = color(179,214,198);
 let bg2 = color(168, 204, 201);
 angleMode(DEGREES);
 background(bg2)
+ noStroke();
+
 }
 
 
@@ -25,7 +27,10 @@ background(bg2)
 function draw() {
 	drawSun();
 	drawHorizon();
-    
+    drawSilhouette();
+    drawShadow();
+
+
 }
 
  function drawSun () {
@@ -35,12 +40,51 @@ push()
  noStroke();
  ellipse(windowWidth/2, windowHeight/2, 600, 400);
  pop ()
+ push()
+ fill(199, 214, 200, 50);
+ noStroke();
+ ellipse(windowWidth/2, windowHeight/2, 550, 300);
+ pop ()
  }
 
  function drawHorizon () {
+         /*** draw a basic two-toned background with*/
   push()
  fill(220, 234, 178);
  noStroke();
  rect(0, windowHeight*0.7, windowWidth, windowHeight);
  pop()
+  push()
+ fill(220, 234, 30, 50);
+ noStroke();
+ rect(0, windowHeight*0.75, windowWidth, windowHeight);
+ pop()
+}
+
+ function drawShadow() {
+    /*** draw an ellipse to represent a silhouette against the sun...*/
+  push()
+ fill(83, 59, 77,190);
+ noStroke();
+ ellipse(windowWidth/2, windowHeight*0.9, 50, 150);
+ rotate(-45);
+ pop()
+}
+
+ function drawSilhouette() {
+    /*** draw an ellipse to represent a silhouette against the sun...*/
+  push()
+ fill(83, 59, 77);
+ noStroke();
+ ellipse(windowWidth/2, windowHeight*0.8, 50, 150);
+ pop()
+}
+
+
+
+function windowResized() {
+        /*** keep elements proportional when the canvas is resized*/
+  resizeCanvas(windowWidth, windowHeight);
+  background(168, 204, 201)
+
 }
