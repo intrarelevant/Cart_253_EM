@@ -20,19 +20,26 @@ background(bg2)
 }
 
 
+
+
 function draw() {
+	drawSun();
+	drawHorizon();
     
-    let c1 = color(199, 214, 109); /*darkgreen*/
-    let c2 = color(220, 234, 178); /*teagreen*/
- /*** draw ellipse as the sun for the landscape*/
+}
+
+ function drawSun () {
+     /*** draw ellipse as the sun for the landscape*/
 push()
- fill(c1);
+ fill(199, 214, 109);
  noStroke();
  ellipse(windowWidth/2, windowHeight/2, 600, 400);
  pop ()
-  /* draw horizon line */
+ }
+
+ function drawHorizon () {
   push()
- fill(c2);
+ fill(220, 234, 178);
  noStroke();
  rect(0, windowHeight*0.7, windowWidth, windowHeight);
  pop()
