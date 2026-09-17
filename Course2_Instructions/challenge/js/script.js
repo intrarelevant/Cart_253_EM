@@ -31,15 +31,16 @@ function draw() {
  function drawSun () {
      /*** draw ellipse as the sun for the landscape*/
 push()
- fill(199, 214, 109);
+ fill(232, 197, 71, 10);
+ noStroke();
+ ellipse(windowWidth/2, windowHeight/2, 800, 600, 25);
+ pop ()
+     push()
+ fill(232, 197, 71);
  noStroke();
  ellipse(windowWidth/2, windowHeight/2, 600, 400);
  pop ()
- push()
- fill(199, 214, 200, 50);
- noStroke();
- ellipse(windowWidth/2, windowHeight/2, 550, 300);
- pop ()
+ 
  }
 
  function drawHorizon () {
@@ -62,6 +63,8 @@ push()
  fill(83, 59, 77);
  noStroke();
  ellipse(windowWidth/2.5, windowHeight*0.8, 50, 150);
+  ellipse(windowWidth/2.5, windowHeight*0.7, 50, 50);
+
  pop()
 }
 
@@ -70,7 +73,7 @@ push()
   push()
  fill(83, 59, 77,190);
  noStroke();
- ellipse(windowWidth/2.5, windowHeight*0.9, 50, 150);
+ ellipse(windowWidth/2.5, windowHeight*0.9, 50, 200);
  rotate(-45);
  pop()
 }
