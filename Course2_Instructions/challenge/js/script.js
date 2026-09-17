@@ -61,16 +61,6 @@ push()
  pop()
 }
 
- function drawShadow() {
-    /*** draw an ellipse to represent a silhouette against the sun...*/
-  push()
- fill(83, 59, 77,190);
- noStroke();
- ellipse(windowWidth/2, windowHeight*0.9, 50, 150);
- rotate(-45);
- pop()
-}
-
  function drawSilhouette() {
     /*** draw an ellipse to represent a silhouette against the sun...*/
   push()
@@ -80,6 +70,15 @@ push()
  pop()
 }
 
+ function drawShadow() {
+    /*** draws the shadow of the silhouette...*/
+  push()
+ fill(83, 59, 77,190);
+ noStroke();
+ ellipse(windowWidth/2, windowHeight*0.9, 50, 150);
+ rotate(-45);
+ pop()
+}
 
 
 function windowResized() {
