@@ -1,6 +1,6 @@
 # TITLE OF PROJECT
 
-AUTHOR NAME
+Erica Mercier
 
 [View this project online](URL_FOR_THE_RUNNING_PROJECT)
 
