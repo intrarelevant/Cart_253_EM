@@ -17,15 +17,15 @@ let bg1 = color(179,214,198);
 let bg2 = color(168, 204, 201);
 angleMode(DEGREES);
 background(bg2)
- noStroke();
+noStroke();
 
 }
 
 function draw() {
 	drawSun();
 	drawHorizon();
-    drawSilhouette();
-    drawShadow();
+  drawSilhouette();
+  drawShadow();
 }
 
  function drawSun () {
