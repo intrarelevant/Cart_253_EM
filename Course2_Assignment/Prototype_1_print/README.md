@@ -1,4 +1,4 @@
-# TITLE OF PROJECT
+# Prototype 1 - Print
 
 Erica Mercier
 
@@ -6,18 +6,13 @@ Erica Mercier
 
 ## Description
 
-This description should help the reader understand what the program is, anything they should know to be able to experience it (controls, special features, etc.), and what the desired user experience is. For example:
+On page refresh, the page renders a set of overlapping spheres at various coordinates. I wanted to create a halftone printing technique but using code.
 
 ## Attribution
 
-This bit should attribute any code, assets or other elements used taken from other sources. For example:
-
 > - This project uses [p5.js](https://p5js.org).
-> - The clown image is a capture of the clown from the Apple emoji character set.
-> - The barking sound effect is "single dog bark 1" by crazymonke9 from freesound.org: https://freesound.org/people/crazymonke9/sounds/418107/
+> - I used the [p5 tutorial] (https://p5js.org/tutorials/coordinates-and-transformations/) about coordinates and transformations as a starting point. I wanted to work with 3d shapes rendered in 2d.
 
-## License
-
-This bit could include the license you want to apply to your work. For example:
-
-> This project is licensed under a Creative Commons Attribution ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)) license with the exception of libraries and other components with their own licenses.
+## References
+I was inspired by the below piece by Martens & Martens: 
+! [Untiteld 2014 101*151mm by Martens & Martens] (https://martens-martens.com/monoprints/images/mp00364.jpg)
