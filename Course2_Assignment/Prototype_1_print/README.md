@@ -2,7 +2,7 @@
 
 Erica Mercier
 
-[View this project online](URL_FOR_THE_RUNNING_PROJECT)
+[View this project online](https://intrarelevant.github.io/Cart_253_EM/Course2_Assignment/Prototype_1_print/index.html)
 
 ## Description
 
