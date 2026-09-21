@@ -10,22 +10,44 @@
 "use strict";
 
 /* Store Positions */
-let positions = [];
-let rotations = [];
-let scales = [];
+let positions_r = [];
+let scales_r = [];
+let positions_g = [];
+let scales_g = [];
+let positions_b = [];
+let scales_b = [];
 
 /**
  * Setup, Canvas should be height and width of browser window; multiply the geometry and set to random positions; rotate it
 */
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
-  for (let i = 0; i < 60; i++) {
-    positions.push(createVector(
-      random(-width / 3, width /3),
-      random(-height / 2, height / 2),
-      random(-width / 3, width / 3)
+  createCanvas(900, 900, WEBGL);
+  /*circle group - red*/
+  for (let i = 0; i < 45; i++) {
+    positions_r.push(createVector(
+      random(-width / 4, width /4),
+      random(-height / 4, height / 4),
+      random(-width / 4, width / 4)
     ));
-    scales.push(random(2, 10));
+    scales_r.push(random(2, 3));
+  }
+  /*sphere group - green*/
+ for (let i = 0; i < 45; i++) {
+    positions_g.push(createVector(
+      random(-width / 4, width /4),
+      random(-height / 4, height / 4),
+      random(-width / 4, width / 4)
+    ));
+    scales_g.push(random(2, 3));
+  }
+  /*sphere group - blue*/
+   for (let i = 0; i < 45; i++) {
+    positions_b.push(createVector(
+      random(-width / 4, width /4),
+      random(-height / 4, height / 4),
+      random(-width / 4, width / 4)
+    ));
+    scales_b.push(random(2, 3));
   }
 }
 
@@ -34,28 +56,73 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
-/*disable depth?
-drawingContext.enable(drawingContext.DEPTH_TEST);*/
+/*disable depth?*/
+drawingContext.enable(drawingContext.DEPTH_TEST);
+
 
 function draw() {
-/*Draw background and set render conditions for 3D Objects*/
-  background(236, 236, 234); /* 'grey' */
-  smooth();
+  background(236, 236, 234); // nearly white grey
   noLights();
+  smooth();
   noStroke();
+  drawSpheresR(); 
+  drawSpheresG();
+  drawSpheresB();
+}
 
- /*Draw the spheres at the specified randomized positions*/ 
-  for (let i = 0; i < 50; i += 1) {
+function drawSpheresR() {
+  for (let i = 0; i < positions_r.length; i++) {
     push();
+
     translate(
-      positions[i].x,
-      positions[i].y,
-      positions[i].z
+      positions_r[i].x,
+      positions_r[i].y,
+      positions_r[i].z
     );
-    scale(scales[i]);
-    fill(255, 107, 108, 40); /*grapefruit pink*/
-    sphere(10,24,24);
-    fill(255, 207, 108, 40); /*test*/
-    sphere(10,24,24);
-    pop();}
+
+    scale(scales_r[i]);
+
+    fill(255, 107, 108, 85);
+    sphere(10, 32, 16);
+
+    pop();
+  }
+}
+
+function drawSpheresG() {
+  for (let i = 0; i < positions_g.length; i++) {
+    push();
+
+    translate(
+      positions_g[i].x,
+      positions_g[i].y,
+      positions_g[i].z
+    );
+
+    scale(scales_g[i]);
+
+    fill(218, 204, 62, 85);
+    sphere(10, 32, 16);
+
+    pop();
+  }
+}
+
+function drawSpheresB() {
+  for (let i = 0; i < positions_b.length; i++) {
+    push();
+
+    translate(
+      positions_b[i].x,
+      positions_b[i].y,
+      positions_b[i].z
+    );
+
+    scale(scales_b[i]);
+
+    fill(26, 101, 158, 85);
+    sphere(10, 32, 16);
+
+    pop();
+  }
 }
