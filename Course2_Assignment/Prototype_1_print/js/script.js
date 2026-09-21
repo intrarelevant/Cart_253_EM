@@ -15,22 +15,17 @@ let rotations = [];
 let scales = [];
 
 /**
- * Setup, Canvas should be height and width of browser window; multiply the geometry
+ * Setup, Canvas should be height and width of browser window; multiply the geometry and set to random positions; rotate it
 */
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 60; i++) {
     positions.push(createVector(
-      random(-width / 2, width / 2),
+      random(-width / 3, width /3),
       random(-height / 2, height / 2),
-      random(-width / 2, width / 2)
+      random(-width / 3, width / 3)
     ));
-    rotations.push(createVector(
-      random(TWO_PI),
-      random(TWO_PI),
-      random(TWO_PI)
-    ));
-    scales.push(random(0.5, 2));
+    scales.push(random(2, 10));
   }
 }
 
@@ -39,24 +34,28 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
-function draw() {
-  background(255);
-  orbitControl();
-  noStroke();
-  lights();
+/*disable depth?
+drawingContext.enable(drawingContext.DEPTH_TEST);*/
 
-  for (let i = 0; i < 10; i += 1) {
+function draw() {
+/*Draw background and set render conditions for 3D Objects*/
+  background(236, 236, 234); /* 'grey' */
+  smooth();
+  noLights();
+  noStroke();
+
+ /*Draw the spheres at the specified randomized positions*/ 
+  for (let i = 0; i < 50; i += 1) {
     push();
     translate(
       positions[i].x,
       positions[i].y,
       positions[i].z
     );
-    rotateX(rotations[i].x);
-    rotateY(rotations[i].y);
-    rotateZ(rotations[i].z);
     scale(scales[i]);
-    box(20);
-    pop();
-  }
+    fill(255, 107, 108, 40); /*grapefruit pink*/
+    sphere(10,24,24);
+    fill(255, 207, 108, 40); /*test*/
+    sphere(10,24,24);
+    pop();}
 }
