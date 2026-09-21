@@ -61,9 +61,9 @@ function drawGrain() {
   }
 
   // Occasional darker grain
-  stroke(0, 0, 0, 60);
+  stroke(46, 46, 36, 60);
 
-  for (let i = 0; i < 3500; i++) {
+  for (let i = 0; i < 9000; i++) {
     let x = random(-width / 2, width / 2);
     let y = random(-height / 2, height / 2);
     point(x, y);
