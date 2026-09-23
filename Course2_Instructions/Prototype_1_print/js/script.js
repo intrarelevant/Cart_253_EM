@@ -5,6 +5,7 @@
  * Instructions assignment
  * Note I used the tutorial below:
  * https://p5js.org/tutorials/coordinates-and-transformations/
+ * This program will draw spheres as circles in a pseudo-halftone print
  */
 
 "use strict";
@@ -18,14 +19,14 @@ let positions_b = [];
 let scales_b = [];
 
 /**
- * Setup, Canvas should be height and width of browser window; multiply the geometry and set to random positions; rotate it
+ * Setup, multiply the geometry and set to random positions; rotate it
 */
 function setup() {
   createCanvas(900, 900, WEBGL);
   /*circle group - red*/
   for (let i = 0; i < 45; i++) {
     positions_r.push(createVector(
-      random(-width / 4, width /4),
+      random(-width / 4, width /4), // I use 1/4 because I want the spheres to remain relative concentrated
       random(-height / 4, height / 4),
       random(-width / 4, width / 4)
     ));
@@ -65,7 +66,7 @@ function draw() {
   noLights();
   smooth();
   noStroke();
-  drawSpheresR(); 
+  drawSpheresR();  // one function for each group of spheres, the code is merely reused
   drawSpheresG();
   drawSpheresB();
 }

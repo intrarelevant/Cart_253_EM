@@ -1,8 +1,7 @@
 /**
  * Prototype 2 : Class 2 September 16th 2026
  * Erica Mercier
- * 
- *
+ * This is a program that resizes squares using the fibonnaci sequence, reacting to the browser dimensions
  */
 
 "use strict";

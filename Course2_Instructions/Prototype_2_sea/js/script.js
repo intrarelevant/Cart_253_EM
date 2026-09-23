@@ -1,7 +1,7 @@
 /**
  * Prototype 2 : Class 2 September 16th 2026
  * Erica Mercier
- * 
+ * This is a simple program that draws a series of ellipsoids to create curved 'waves'
  *
  */
 
