@@ -7,9 +7,7 @@
 
 "use strict";
 
-/**
- * Create the canvas
- */
+/*** Create the canvas*/
 function setup() {
   createCanvas(400, 400);
 }
@@ -17,14 +15,10 @@ function setup() {
 let theSky = {
   colors: {
     from: { // starting point for the sky
-        r: 151,
-        g: 218,
-        b: 237
+        r: 151,g: 218, b: 237
         },
    to: { // this will be the constrained color of the sky
-        r: 3,
-        g: 14, 
-        b: 17}
+        r: 3, g: 14, b: 17}
     }
 }
 // Mr. Furious
@@ -35,9 +29,7 @@ let mrFurious = {
   size: 100,
   // Colour
   fill: {
-    r: 255,
-    g: 225,
-    b: 225
+    r: 255, g: 225, b: 225
   }
 };
 /*** Draw (and update) Mr. Furious*/
@@ -65,6 +57,6 @@ function drawMrFurious() {
   push();
   noStroke();
   fill(mrFurious.fill.r, mrFurious.fill.g, mrFurious.fill.b);
-  ellipse(mrFurious.x, mrFurious.y, mrFurious.size);
+  ellipse(mrFurious.x * random(0.4,0.6), mrFurious.y, mrFurious.size); // he's shakin
   pop();
 }
