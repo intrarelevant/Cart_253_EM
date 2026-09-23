@@ -2,11 +2,15 @@
 
 Erica Mercier
 
-[View this project online](https://intrarelevant.github.io/Cart_253_EM/Course2_Assignment/Prototype_1_print/index.html)
+[Prototype 1, Halftone print](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_1_print/) (this project)
 
+Other results for this class:
+[Prototype 2, Seascape](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_2_sea/index.html), and [Prototype 3, Fibonnaci](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_3_squares/index.html)
 ## Description
 
 On page refresh, the page renders a set of overlapping spheres at various coordinates. I wanted to create a halftone printing technique but using code.
+
+
 
 ## Attribution
 
