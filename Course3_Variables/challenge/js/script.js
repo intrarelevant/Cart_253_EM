@@ -13,7 +13,6 @@
 function setup() {
   createCanvas(400, 400);
 }
-
 // background color values
 let theSky = {
   colors: {
@@ -28,7 +27,6 @@ let theSky = {
         b: 17}
     }
 }
-
 // Mr. Furious
 let mrFurious = {
   // Position and size
@@ -42,18 +40,16 @@ let mrFurious = {
     b: 225
   }
 };
-
-/**
- * Draw (and update) Mr. Furious
- */
+/*** Draw (and update) Mr. Furious*/
 function draw() {
 // background color 
-
 background(theSky.colors.from.r,theSky.colors.from.g,theSky.colors.from.b)
+
 // sky constraints
 theSky.colors.from.r  = constrain(theSky.colors.from.r, theSky.colors.from.r, theSky.colors.to.r);
 theSky.colors.from.g  = constrain(theSky.colors.from.g, theSky.colors.from.g, theSky.colors.to.g);
 theSky.colors.from.b  = constrain(theSky.colors.from.b, theSky.colors.from.b, theSky.colors.to.b);
+
 // sky color changes
 theSky.colors.from.r  = theSky.colors.from.r -0.75
 theSky.colors.from.g  = theSky.colors.from.g -0.25
@@ -64,7 +60,6 @@ theSky.colors.from.b  = theSky.colors.from.b -0.25
   mrFurious.fill.b = mrFurious.fill.b-0.25 // remove blue by a a small amount, so that there's also a slight purple hue
 drawMrFurious ()
 }
-
 function drawMrFurious() {
   // Draw Mr. Furious as a coloured circle
   push();
