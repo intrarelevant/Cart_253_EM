@@ -1,6 +1,8 @@
 # September 21nd - Assignment - Instructions - Thoughts on my Prototypes
 
-My main idea when approaching these prototypes was the need to work with mainly static 2d shapes and colors and wanting to borrow from physical mediums like printmaking. 
+Class 2: [Prototype 1, Halftone print](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_1_print/), [Prototype 2, Seascape](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_2_sea/index.html), and [Prototype 3, Fibonnaci](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_3_squares/index.html)
+
+My main idea when approaching these prototypes was the need to work with mainly static 2d shapes and colors and wanting to borrow from physical mediums like printmaking. I also wanted to use some math.
 
 I wanted to start from a familiar concept for a first prototype but I ended up being a bit out of my depth. I knew from prior projects I made in Touchdesigner that I could play with 3d shapes to add additional levels of details possible via rotation, via movement along a Z axis, or through lighting to create more interesting and detailed flat images. I also had a reference image saved of a monograph by Karel & Charlotte Martens, showing a a halftone print that made the printing technique itself the focus of the image; in the same vein I didn't want to use the shapes to create a specific composition. I used randomization for the size and position of the spheres based on sample code on the p5 website and iterated from there. I didn't quite understand everything I was doing around repetition but continued to experiment until I received a result I liked.  
 
