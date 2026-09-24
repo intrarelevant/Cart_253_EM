@@ -33,37 +33,49 @@ let myColors = {
       r:207, g:210, b:178 }, // "Sand Dune" kind of like green
 }
 
-// 2: I want the individual letters to wiggle around at an even pace and be able to control the motion
-let letterWiggle = {
-    translate: {
+// 2: I want the individual letters to wiggle around at an even pace and be able to control the motion in one place
+let letter = {
     intensity: {x: 1.02, y: 1.1, scale: 1.2} // setting up max intensities for movement
   }
-}
 
 // 3: Rearranging the letters
-// the letters are in 4 positions (pos)
-// W pos 1 -> pos 4
-// O pos 2 -> pos 3
-// N pos 3 -> pos 2
-// K pos 4 -> pos 1
-//
 
-let wordLetters = { // the positions can be used as the origin but also as the constraints
-    pos1: {x:300, y:400},
-    pos2: {x:400, y:400},
+
+let wordLetters = { // I want to act on each letter individually. the positions can be used as the origin but also as the constraints
+    pos1: {x:200, y:400},
+    pos2: {x:300, y:400},
     pos3: {x:500, y:400},
     pos4: {x:600, y:400},
+    abs: { // I need the absolute origin that doesn't change.
+          pos1: {x:200, y:400},
+          pos2: {x:300, y:400},
+          pos3: {x:500, y:400},
+          pos4: {x:600, y:400},
+    }
   }
 
 
 /// Draw starts and runs every frame
+
 function draw() {
-absTime = frameCount/600 ;// duration - 10 seconds // I want absTime to function as a timer.
+absTime = frameCount/600 ;// duration - 10 seconds // I want absTime to function as a timer if I need it.
 background(myColors.bg.r, myColors.bg.g, myColors.bg.b); // apply the background color 
-printLetter1()
-printLetter2()
-printLetter3()
-printLetter4()
+
+// I want the letters to be constrained to their ending positions in terms of the x axis.
+// the letters must travel to 4 positions
+// W pos 1 -> pos 4, and O pos 2 -> pos 3 so, advance but choose the min of both values.
+wordLetters.pos1.x = min (wordLetters.pos1.x + (letter.intensity.x*random(0.9,1.1)), wordLetters.abs.pos4.x) 
+wordLetters.pos2.x = min (wordLetters.pos2.x + (letter.intensity.x*random(0.9,1.1)), wordLetters.abs.pos3.x)
+
+// N pos 3 -> pos 2 and K pos 4 -> pos 1, so, I want the max of both values
+wordLetters.pos3.x = max (wordLetters.pos3.x - (letter.intensity.x*random(0.9,1.1)), wordLetters.abs.pos2.x) 
+wordLetters.pos4.x = max (wordLetters.pos4.x - (letter.intensity.x*random(0.9,1.1)), wordLetters.abs.pos1.x)
+// 
+//
+  printLetter1()
+  printLetter2()
+  printLetter3()
+  printLetter4()
 }
 
 // to start I just want to get the letters in position 
