@@ -6,8 +6,8 @@ Erica Mercier
 
 ## Description
 
-This prototype is a type based project about anagrams, focusing on the rearrangement of letters: know to wonk.
+This prototype is a type based project about anagrams, focusing on the rearrangement of letters that will go from "wonk" to "know."
 
 ## Attribution
 
-I used the project instructions available [here](https://pippinbarr.com/cart253/assignments/challenges/variables/)
+I was inspired by this website for the band Powder: https://powd.jp/

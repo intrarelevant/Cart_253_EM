@@ -13,7 +13,6 @@ let absTime = 0;
 /*** Create the canvas*/
 function setup() {
   createCanvas(800, 800);
-  absTime = frameCount/60 // time in seconds
 }
 
 // So, I want to  
@@ -34,77 +33,81 @@ let myColors = {
 }
 
 // 2: I want the individual letters to wiggle around at an even pace and be able to control the motion in one place
-let letter = {
-    intensity: {x: 1.02, y: 1.1, scale: 1.2} // setting up max intensities for movement
+
+/// REFERENCE FOR ME
+//Example: movingY = 400 + 20 * sin(frameCount * 0.05);
+//
+//400 is the center position which will be defined in 3 (the position of the letters)
+//20 is the movement  amplitude. <- defined here
+//0.05 controls the speed. <- defined here
+//sin(...) creates smooth, continuous movement (in the function)
+
+let letterWiggle = {
+  y: {amp:20, speed:0.05},
+  s: {amp:5, speed:0.04}
   }
 
 // 3: Rearranging the letters
-
-
-let wordLetters = { // I want to act on each letter individually. the positions can be used as the origin but also as the constraints
+let wordLetters = { // I want to act on each letter individually, these are the starting positions.
     pos1: {x:200, y:400},
     pos2: {x:300, y:400},
     pos3: {x:500, y:400},
     pos4: {x:600, y:400},
-    abs: { // I need the absolute origin that doesn't change.
+    abs: { // but I will also need an absolute origin that doesn't change.
           pos1: {x:200, y:400},
-          pos2: {x:300, y:400},
-          pos3: {x:500, y:400},
+          pos2: {x:350, y:400},
+          pos3: {x:450, y:400},
           pos4: {x:600, y:400},
+          xtranslate: 1.02 // speed of horizontal motion
     }
   }
 
-
 /// Draw starts and runs every frame
-
 function draw() {
 absTime = frameCount/600 ;// duration - 10 seconds // I want absTime to function as a timer if I need it.
 background(myColors.bg.r, myColors.bg.g, myColors.bg.b); // apply the background color 
 
 // I want the letters to be constrained to their ending positions in terms of the x axis.
-// the letters must travel to 4 positions
 // W pos 1 -> pos 4, and O pos 2 -> pos 3 so, advance but choose the min of both values.
-wordLetters.pos1.x = min (wordLetters.pos1.x + (letter.intensity.x*random(0.9,1.1)), wordLetters.abs.pos4.x) 
-wordLetters.pos2.x = min (wordLetters.pos2.x + (letter.intensity.x*random(0.9,1.1)), wordLetters.abs.pos3.x)
-
+wordLetters.pos1.x = min (wordLetters.pos1.x + (wordLetters.abs.xtranslate*random(0.9,1.1)), wordLetters.abs.pos4.x) 
+wordLetters.pos2.x = min (wordLetters.pos2.x + (wordLetters.abs.xtranslate*random(0.9,1.1)), wordLetters.abs.pos3.x)
 // N pos 3 -> pos 2 and K pos 4 -> pos 1, so, I want the max of both values
-wordLetters.pos3.x = max (wordLetters.pos3.x - (letter.intensity.x*random(0.9,1.1)), wordLetters.abs.pos2.x) 
-wordLetters.pos4.x = max (wordLetters.pos4.x - (letter.intensity.x*random(0.9,1.1)), wordLetters.abs.pos1.x)
-// 
-//
+wordLetters.pos3.x = max (wordLetters.pos3.x - (wordLetters.abs.xtranslate*random(0.9,1.1)), wordLetters.abs.pos2.x) 
+wordLetters.pos4.x = max (wordLetters.pos4.x - (wordLetters.abs.xtranslate*random(0.9,1.1)), wordLetters.abs.pos1.x)
   printLetter1()
   printLetter2()
   printLetter3()
   printLetter4()
 }
 
-// to start I just want to get the letters in position 
-
+//Example: movingY = 400 + 20 * sin(frameCount * 0.05);
 
 function printLetter1() { // starting position 1, "w"
   push();
   textSize(12)
-  text('w', wordLetters.pos1.x, wordLetters.pos1.y)
+  text('w', wordLetters.pos1.x, wordLetters.pos1.y + letterWiggle.y.amp * sin(frameCount*letterWiggle.y.speed)) // the y coordinate moves up and down on the sine wave.
   pop();
 }
 
 function printLetter2() { // starting position 2, "o"
   push();
   textSize(12)
-  text('o',wordLetters.pos2.x, wordLetters.pos2.y)
+  text('o',wordLetters.pos2.x, wordLetters.pos2.y + letterWiggle.y.amp * cos(frameCount*letterWiggle.y.speed)*-1) // adding some variation by switching function
   pop();
 }
 
 function printLetter3() { // starting position 3, "n"
   push();
   textSize(12)
-  text('n',wordLetters.pos3.x, wordLetters.pos3.y)
+  text('n',wordLetters.pos3.x, wordLetters.pos3.y + letterWiggle.y.amp * sin(frameCount*letterWiggle.y.speed)*-1) // same thing
   pop();
 }
 
 function printLetter4() { // starting position 4, "k"
   push();
   textSize(12)
-  text('k',wordLetters.pos4.x, wordLetters.pos4.y)
+  text('k',wordLetters.pos4.x, wordLetters.pos4.y + letterWiggle.y.amp * cos(frameCount*letterWiggle.y.speed)) // yay
   pop();
 }
+
+
