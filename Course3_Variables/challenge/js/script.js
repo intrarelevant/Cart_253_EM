@@ -85,9 +85,10 @@ function drawMrFurious() {
   noStroke();
   fill(mrFurious.fill.r, mrFurious.fill.g, mrFurious.fill.b);
   ellipse(
-        max(mrFurious.x*random(1,1.2)*angerTime, 
-            mrFurious.x), 
-            mrFurious.y, mrFurious.size); // he's shakin!! use the maximum of either the shaking and time pass..
+        max(
+                mrFurious.x*random(1,1.2)*angerTime, // basically the position is either set after the 'timer' becomes 1 after the 360 seconds
+            mrFurious.x), // OR he's at default position (at the origin)
+            mrFurious.y, mrFurious.size); 
   pop();
 }
 
