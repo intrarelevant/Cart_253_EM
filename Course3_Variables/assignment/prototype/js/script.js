@@ -2,7 +2,7 @@
  * Anagram
  * Erica Mercier
  * I was inspired by this website for the band 'Powder': https://powd.jp/ for some of the letter motion
- * know – wonk.
+ * wonk = > know.
  */
 
 "use strict";
@@ -12,7 +12,7 @@ let absTime = 0;
 
 /*** Create the canvas*/
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(800, 800);
   absTime = frameCount/60 // time in seconds
 }
 
@@ -33,25 +33,66 @@ let myColors = {
       r:207, g:210, b:178 }, // "Sand Dune" kind of like green
 }
 
-// 2 I want the individual letters to wiggle around at an even pace and be able to control the motion
+// 2: I want the individual letters to wiggle around at an even pace and be able to control the motion
 let letterWiggle = {
-    movement: {
-    intensity: {x: 1.05, y: 1.1, scale: 1.2} // setting up
+    translate: {
+    intensity: {x: 1.02, y: 1.1, scale: 1.2} // setting up max intensities for movement
   }
 }
 
-// I'll do 3 later. For now, I will just print the text.
+// 3: Rearranging the letters
+// the letters are in 4 positions (pos)
+// W pos 1 -> pos 4
+// O pos 2 -> pos 3
+// N pos 3 -> pos 2
+// K pos 4 -> pos 1
+//
+
+let wordLetters = { // the positions can be used as the origin but also as the constraints
+    pos1: {x:300, y:400},
+    pos2: {x:400, y:400},
+    pos3: {x:500, y:400},
+    pos4: {x:600, y:400},
+  }
+
 
 /// Draw starts and runs every frame
 function draw() {
 absTime = frameCount/600 ;// duration - 10 seconds // I want absTime to function as a timer.
 background(myColors.bg.r, myColors.bg.g, myColors.bg.b); // apply the background color 
-printText()
+printLetter1()
+printLetter2()
+printLetter3()
+printLetter4()
 }
 
-function printText() {
+// to start I just want to get the letters in position 
+
+
+function printLetter1() { // starting position 1, "w"
   push();
   textSize(12)
-  text('wonk',width/2,width/2)
+  text('w', wordLetters.pos1.x, wordLetters.pos1.y)
+  pop();
+}
+
+function printLetter2() { // starting position 2, "o"
+  push();
+  textSize(12)
+  text('o',wordLetters.pos2.x, wordLetters.pos2.y)
+  pop();
+}
+
+function printLetter3() { // starting position 3, "n"
+  push();
+  textSize(12)
+  text('n',wordLetters.pos3.x, wordLetters.pos3.y)
+  pop();
+}
+
+function printLetter4() { // starting position 4, "k"
+  push();
+  textSize(12)
+  text('k',wordLetters.pos4.x, wordLetters.pos4.y)
   pop();
 }
