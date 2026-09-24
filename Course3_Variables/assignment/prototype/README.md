@@ -6,7 +6,7 @@ Erica Mercier
 
 ## Description
 
-This prototype is a type based project about anagrams, focusing on the rearrangement of letters: quite – quiet.
+This prototype is a type based project about anagrams, focusing on the rearrangement of letters: know to wonk.
 
 ## Attribution
 
