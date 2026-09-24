@@ -8,14 +8,10 @@ This is E_M's coursework and journal for CART253; I'll be using this page as a r
 # Class Assignments
 - Class 2: [Prototype 1, Halftone print](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_1_print/), [Prototype 2, Seascape](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_2_sea/index.html), and [Prototype 3, Fibonnaci](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_3_squares/index.html)
 
-# Challenges
+# In-Class Challenges
+- Class 3: [mr anger D:<](https://intrarelevant.github.io/Cart_253_EM/Course3_Variables/challenge/index.html)
 - Class 2: [My gorgeous landscape <3](/Course2_Instructions/challenge/index.html)
-- Class 1: this page
-
-
-
-
-- Class 1: this page and the journal linked above!
+- Class 1: this page & the journal linked above!
 
 # It's not a banner image, but... 
 ![horse](/assets/aww.jpg)
