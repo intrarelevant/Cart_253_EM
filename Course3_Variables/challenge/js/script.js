@@ -41,8 +41,7 @@ let mrFurious = {
 // birb
 let theBirb = {
   // Position and size
-  x: 25,
-  y: 25,
+  x: 25, y: 25,
   textsize:25
 };
 
@@ -50,7 +49,7 @@ let theBirb = {
 function draw() {
 
 // reassign framecount
-angerTime = frameCount/360
+angerTime = frameCount/360 // timer for 6 number of seconds until he shakes
 
 // background color 
 background(theSky.colors.from.r,theSky.colors.from.g,theSky.colors.from.b)
@@ -72,7 +71,7 @@ mrFurious.fill.b = mrFurious.fill.b-0.25 // remove blue by a a small amount, so 
 // bird moves from left to right
 theBirb.x= theBirb.x+0.2
 
-//constrain time to 10 seconds and remap
+//constrain time to 1 seconds and remap
 angerTime = constrain(angerTime, 0, 1)
 map (angerTime, 0, 1, 0.7, 1)
 
@@ -85,7 +84,10 @@ function drawMrFurious() {
   push();
   noStroke();
   fill(mrFurious.fill.r, mrFurious.fill.g, mrFurious.fill.b);
-  ellipse(max(mrFurious.x*random(1,1.2)*angerTime,mrFurious.x), mrFurious.y, mrFurious.size); // he's shakin!! i use the scale to avoid him thrashing around too much
+  ellipse(
+        max(mrFurious.x*random(1,1.2)*angerTime, 
+            mrFurious.x), 
+            mrFurious.y, mrFurious.size); // he's shakin!! use the maximum of either the shaking and time pass..
   pop();
 }
 
