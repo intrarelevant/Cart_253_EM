@@ -11,19 +11,27 @@
 
 "use strict";
 
-
-function setup() {
-createCanvas(windowWidth, windowHeight, WEBGL);
-}
-
-
 let myColors = {
     bg: { // background color
         r:1, g:22, b:30 },// "inkblack"
     wavegenerated: {
         r:89, g:131, b:146}, // "air force blue"
-    altwave: {
+    waveendpoint: {
       r:18, g:69, b:89} // "dark teal"
+}
+
+function setup() {
+createCanvas(500, 500);
+frameRate(random(4,6)) // slow the framerate
+background(myColors.bg.r, myColors.bg.g, myColors.bg.b); // apply the background color
+}
+
+
+
+let waveSize = {
+    start: {minw:50, maxw:100, minh: 20, maxh: 30}
+    //max: {minw:80, maxw:100, minh: 41, maxh: 50}
+
 }
 
 /// REFERENCE FOR ME
@@ -34,11 +42,24 @@ let myColors = {
 //sin(...) creates smooth, continuous movement (in the functions later
 
 let trigValues = { // I will use these values to control the motion of the scaling
-  y: {amp:40, speed:0.03},
-  s: {amp:4, speed:0.03}
+  s: {amp:10, speed:0.5}
   }
 
 /// Draw starts and runs every frame
 function draw() {
-background(myColors.bg.r, myColors.bg.g, myColors.bg.b, 120*random(0.95,1.05)); // apply the background color and but with low opacity to create feedback.
+background(myColors.bg.r, myColors.bg.g, myColors.bg.b, 50); // apply the background color and but with low opacity to create feedback.
+
+drawCircle()
+}
+
+// create a circle at the mouse origin
+
+function drawCircle (){
+push()
+stroke(myColors.wavegenerated.r,myColors.wavegenerated.g,myColors.wavegenerated.b) // pick the colors
+noFill()
+// I want the circles to have some random size but also ease / in out, so I use some trig functions
+ellipse(mouseX, mouseY, (random(waveSize.start.minw, waveSize.start.maxw) + trigValues.s.amp * cos(frameCount*trigValues.s.speed) ), (random(waveSize.start.minh, waveSize.start.maxh)+ trigValues.s.amp * sin(frameCount*trigValues.s.speed)));
+
+pop()
 }
