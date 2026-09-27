@@ -56,7 +56,7 @@ strokeWeight(1);
 stroke(myColors.wave.r,myColors.wave.g,myColors.wave.b) // pick the colors
 noFill()
 // I want the circles to have some random size but also ease / in out, so I use some trig functions
-ellipse(mouseX+random(-50,50), mouseY+random(-10,10), (random(waveSize.start.minw, waveSize.start.maxw) + trigValues.s.amp * cos(frameCount*trigValues.s.speed) ), (random(waveSize.start.minh, waveSize.start.maxh)+ trigValues.s.amp * sin(frameCount*trigValues.s.speed)));
+ellipse(mouseX+random(-50,50), windowHeight*0.8+random(-10,10), (random(waveSize.start.minw, waveSize.start.maxw) + trigValues.s.amp * cos(frameCount*trigValues.s.speed) ), (random(waveSize.start.minh, waveSize.start.maxh)+ trigValues.s.amp * sin(frameCount*trigValues.s.speed)));
 pop()
 }
 
@@ -66,6 +66,6 @@ push()
 strokeWeight(1);
 stroke(myColors.rain.r,myColors.rain.g,myColors.rain.b) // pick the colors
 noFill()
-line(mouseX,mouseY,mouseX+random(10,30),0)
+line(mouseX,windowHeight*0.8+random(-10,10),mouseX+random(10,30),0)
 pop()
 }
