@@ -2,7 +2,7 @@
 
 Erica Mercier
 
-[View this project online](ttps://intrarelevant.github.io/Cart_253_EM/Course3_Variables/assignment/prototype_2/index)
+[View this project online](ttps://intrarelevant.github.io/Cart_253_EM/Course3_Variables/assignment/prototype_3/index)
 
 ## Description
 
