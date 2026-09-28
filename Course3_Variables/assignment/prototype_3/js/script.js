@@ -2,7 +2,7 @@
  * text generator
  * Erica Mercier
 // Goals
-// create a short sentence using irregular verbs and adverbs
+// create one sentence using irregular verbs and adverbs
 */
 
 
@@ -21,12 +21,18 @@ createCanvas(windowHeight, windowHeight);
 background(myColors.bg.r, myColors.bg.g, myColors.bg.b); // apply the background at load
 
 // decide on the words.. 
-let pronounSubject = ['', 'you', 'they', '', ''];
-let verb = ['beset', 'beat', 'bent', 'bled', 'bid', 'cut', 'cast', 'dig', 'dream', 'forgave', 'shed', 'shut', 'say', 'slit', 'sink', 'rid','misread', 'read','split', 'undercut',]; 
-let pronounObject = ['it', 'you', 'her', '', 'me', 'him'];
-let adverb = ['far', 'so', 'here', 'underground', 'away', 'once', 'slow', 'beneath', 'apart', 'hard']
+let pronounSubject = ['', 'you', 'they', ''];
+let verb = ['beset', 'beat', 'bend', 'bled', 'bid', 'cut', 'cast', 'dig', 'dream', 'fought', 'felt', 'forgave', 'shed', 'shut', 'say', 'sing', 'slit', 'sink', 'rid','misread', 'read','split', 'undercut','heard','hid','hit','held','hurt','kept','knew','threw']; 
+let pronounObject = ['it', 'you', '', 'me'];
+let adverb = ['','again','apart','far', 'so', 'here', 'away', 'once', 'slow', 'beneath', 'hard', 'yesterday', '', 'outside', 'within']
 
-let sentence = // pick the words in order
+let sentenceOne = // pick the words in order
+    random(pronounSubject) + " " +
+    random(verb) + " " +
+    random(pronounObject) + " " +
+    random(adverb);
+
+let sentenceTwo = // pick the words in order
     random(pronounSubject) + " " +
     random(verb) + " " +
     random(pronounObject) + " " +
@@ -35,7 +41,9 @@ let sentence = // pick the words in order
 textAlign(CENTER)
 textSize (20)
 fill (myColors.txt.r,myColors.txt.g,myColors.txt.b)
-text (sentence, width/2, height/2)
+text (sentenceOne, width/2, height*0.4)
+text (sentenceTwo, width/2, height*0.6)
+
 }
 
 
