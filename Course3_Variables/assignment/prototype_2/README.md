@@ -6,7 +6,6 @@ Erica Mercier
 
 ## Description
 
-A simple feedback system based on the user mouse position. 
+A simple feedback system based on the user mouse position. The rain will fall towards the user's mouse, and this will generate some circles that splatter.
 
-## Attribution
 

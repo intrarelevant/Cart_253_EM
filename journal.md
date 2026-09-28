@@ -1,3 +1,8 @@
+
+# September 28nd - Assignment - Instructions - Thoughts on my Prototypes
+
+
+
 # September 21nd - Assignment - Instructions - Thoughts on my Prototypes
 
 Class 2: [Prototype 1, Halftone print](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_1_print/), [Prototype 2, Seascape](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_2_sea/index.html), and [Prototype 3, Fibonnaci](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_3_squares/index.html)
