@@ -1,15 +1,23 @@
 
 # September 28nd - Assignment - Instructions - Thoughts on my Prototypes
 
-This week is quite musical in terms of my sources of inspiration. My main goal was to create very fluid looking motions in different ways, and to work with feedback effects and user interaction. I also wanted to stick more to the course material as my very first prototype felt a bit out of my depth.
+ My main goal was to create very fluid looking motions in different ways, and to work with feedback effects and user interaction. I also wanted to stick more to the course material as my very first prototype felt a bit out of my depth. I was mainly thinking about music - artists, songs, lyrics, that I like. I've also read Helene Cixous' Angst not so long ago, and much of her writing uses homophones and homonyms to play with language, to confuse the reader, and to hide psychoanalytic meaning. I thought it could be interesting to play with words.
 
-The first prototype was influenced by the [website for the artist Powder](https://powd.jp/), which uses a motion effect on the otherwise simple website so that text sort of bounces around. While the site is using mostly rotation and translation, I used positioning and trigonometry functions to ease the motion of the letters as they move around. I'd also read Helene Cixous' Angst not too long ago, and much of her writing uses homophones and homonyms to play with language, to confuse the reader, and to hide psychoanalytic meaning. Since it was a typographic prototype, I thought it could be fun to work with language in that way using an anagram, and re-arrange the letters. Here, I go from 'wonk' to 'know,' which is fitting for a student. This could likely be expanded in the future to maybe solve the anagrams in new ways, or allow for user input.
+The first prototype was influenced by the [website for the artist Powder](https://powd.jp/), which uses a motion effect on the otherwise simple website so that text sort of bounces around. While the site is using mostly rotation and translation, I think, I used positioning and trigonometry functions to ease the motion of the letters as they move around.  Since it was a typographic prototype, I thought it could be fun to work with language in that way using an anagram, and re-arrange the letters. Here, I go from 'wonk' to 'know,' which is fitting for a student. This could likely be expanded in the future to maybe solve anagrams, to allow for user input.
 
 I was listening to the song 'She Brings The Rain' by the band Can, so I decided to make something about rain for the second prototype. My goal was to make something that would feel fun and satisfying to play with. I started by creating the circles at the mouse position with some easing functions for scale, then added lines for the rain with some feedback effect. It was nice but it felt a bit too graphic (right)
 
 ![Process screenshots for prototype2](/assets/variables_process.png)
 
 The next morning, I introduced more randomness and added some more logic for the segmentation of the lines, which you can see on the left It's just more thick lines drawn on top, but I find the randomness on the alpha channel helps to sell the effect. I needed to move on so I didn't clean up my code as much as I could for this part. When we learn about loops, I'd like to rework this to make the waves grow in scale.
+
+For a last prototype, I wanted to see how I could use simple variables to generate a coherent sentences. This landed me on the idea of using irregular verbs and adverbs as they can work in a number of grammatical persons, time tenses, and so on. I landed on a simple subject pronoun -> verb -> object pronoun -> adverb structure, with all pronouns and adverbs both being optional. The results can be quite ominous and jarring due to the form and the lack of clear subject, object, or context some examples: 
+
+- "you sing me yesterday / feel"
+- "knew once / you hurt me"
+- "love it yesterday / shut that again"
+
+ Maybe I should have picked happier words, or another sentence structure. I don't mind it, but it might be dreary to play with. Still... 
 
 
 # September 21nd - Assignment - Instructions - Thoughts on my Prototypes

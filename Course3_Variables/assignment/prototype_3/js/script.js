@@ -15,15 +15,21 @@ let myColors = {
         r:80, g:90, b:91} // charcoal
 }
 
-
 function setup() {
 createCanvas(windowHeight, windowHeight);
 background(myColors.bg.r, myColors.bg.g, myColors.bg.b); // apply the background at load
+textAlign(CENTER)
+textSize (12)
+fill (myColors.txt.r,myColors.txt.g,myColors.txt.b), 120
+resetText();
+}
 
+function resetText() {
+    background(myColors.bg.r, myColors.bg.g, myColors.bg.b); // overlay the background
 // decide on the words.. 
 let pronounSubject = ['', 'you', 'they', ''];
-let verb = ['beset', 'beat', 'bend', 'bled', 'bid', 'cut', 'cast', 'dig', 'dream', 'fought', 'felt', 'forgave', 'shed', 'shut', 'say', 'sing', 'slit', 'sink', 'rid','misread', 'read','split', 'undercut','heard','hid','hit','held','hurt','kept','knew','threw']; 
-let pronounObject = ['it', 'you', '', 'me'];
+let verb = ['beset', 'beat', 'bend', 'bled', 'bid', 'cut', 'cast', 'dig', 'dream', 'fought', 'feel', 'forgave', 'shed', 'shut', 'say', 'sing', 'slit', 'sink', 'rid','misread', 'read','split','hear','hide','hit','hold','hurt','kept','knew','threw', 'love',]; 
+let pronounObject = ['it', 'that', '', 'me'];
 let adverb = ['','again','apart','far', 'so', 'here', 'away', 'once', 'slow', 'beneath', 'hard', 'yesterday', '', 'outside', 'within']
 
 let sentenceOne = // pick the words in order
@@ -39,26 +45,15 @@ let sentenceTwo = // pick the words in order
     random(adverb);
 
 textAlign(CENTER)
-textSize (20)
+textSize (24)
 fill (myColors.txt.r,myColors.txt.g,myColors.txt.b)
 text (sentenceOne, width/2, height*0.4)
 text (sentenceTwo, width/2, height*0.6)
-
+textSize (8)
+fill (myColors.txt.r,myColors.txt.g,myColors.txt.b, 120)
+text ('click to reset', width/2, height*0.95)
 }
 
-
-
-///* in case I want to calculate relative positions
-//let canvasPos = {
-  //  topleft:{x:0, y:0},
-    //topright:{x:width, y:0},
-    //middle: {x:width/2, y:height/2},
-    //bottomleft: {x:0, y:height},
-    //bottomright: {x:width, y:height}
-//}
-
-
-// in case I want trig function
-//let trigValues = { // I will use these values to control trig functions
-// s: {amp:20, speed:0.75}}
-/// REFERENCE FOR ME motion = base position + amplitude * sin(frameCount * speed);
+function mousePressed() {
+  resetText();
+}

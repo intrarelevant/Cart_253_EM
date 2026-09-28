@@ -6,6 +6,6 @@ Erica Mercier
 
 ## Description
 
-A simple feedback system based on the user mouse position. The rain will fall towards the user's mouse, and this will generate some circles that splatter.
+a 2 line poem generated using irregular verbs and adverbs
 
 
