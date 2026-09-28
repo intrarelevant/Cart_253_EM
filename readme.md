@@ -6,7 +6,8 @@ This is E_M's coursework and journal for CART253; I'll be using this page as a r
 - [Course Journal](/journal.md)
 
 # Class Assignments
-- Class 2: [Prototype 1, Halftone print](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_1_print/), [Prototype 2, Seascape](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_2_sea/index.html), and [Prototype 3, Fibonnaci](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_3_squares/index.html)
+- Class 3, Variables: [Prototype 1, Anagram](https://intrarelevant.github.io/Cart_253_EM/Course3_Variables/assignment/prototype/), [Prototype 2, Rain](https://intrarelevant.github.io/Cart_253_EM/Course3_Variables/assignment/prototype_2/), [Prototype 3, Poem](https://intrarelevant.github.io/Cart_253_EM/Course3_Variables/assignment/prototype_3/) 
+- Class 2, Instructions: [Prototype 1, Halftone print](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_1_print/), [Prototype 2, Seascape](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_2_sea/index.html), and [Prototype 3, Fibonnaci](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_3_squares/index.html)
 
 # In-Class Challenges
 - Class 3: [mr anger D:<](https://intrarelevant.github.io/Cart_253_EM/Course3_Variables/challenge/index.html)

@@ -1,7 +1,9 @@
 
 # September 28nd - Assignment - Instructions - Thoughts on my Prototypes
 
- My main goal was to create very fluid looking motions in different ways, and to work with feedback effects and user interaction. I also wanted to stick more to the course material as my very first prototype felt a bit out of my depth. I was mainly thinking about music - artists, songs, lyrics, that I like. I've also read Helene Cixous' Angst not so long ago, and much of her writing uses homophones and homonyms to play with language, to confuse the reader, and to hide psychoanalytic meaning. I thought it could be interesting to play with words.
+[Prototype 1, Anagram](https://intrarelevant.github.io/Cart_253_EM/Course3_Variables/assignment/prototype/), [Prototype 2, Rain](https://intrarelevant.github.io/Cart_253_EM/Course3_Variables/assignment/prototype_2/), [Prototype 3, Poem](https://intrarelevant.github.io/Cart_253_EM/Course3_Variables/assignment/prototype_3/) 
+
+My main goal was to create very fluid looking motions in different ways, and to work with feedback effects and user interaction. I also wanted to stick more to the course material as my very first prototype felt a bit out of my depth. I was mainly thinking about music - artists, songs, lyrics, that I like. I've also read Helene Cixous' Angst not so long ago, and much of her writing uses homophones and homonyms to play with language, to confuse the reader, and to hide psychoanalytic meaning. I thought it could be interesting to play with words.
 
 The first prototype was influenced by the [website for the artist Powder](https://powd.jp/), which uses a motion effect on the otherwise simple website so that text sort of bounces around. While the site is using mostly rotation and translation, I think, I used positioning and trigonometry functions to ease the motion of the letters as they move around.  Since it was a typographic prototype, I thought it could be fun to work with language in that way using an anagram, and re-arrange the letters. Here, I go from 'wonk' to 'know,' which is fitting for a student. This could likely be expanded in the future to maybe solve anagrams, to allow for user input.
 
