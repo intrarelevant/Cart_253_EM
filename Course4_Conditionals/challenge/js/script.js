@@ -27,7 +27,7 @@ const puck = {
 const user = {
   x: undefined, // will be mouseX
   y: undefined, // will be mouseY
-  size: 75,
+  size: 20,
   fill: "#000000"
 };
 
@@ -137,7 +137,7 @@ function scoreGoal() {
 
 function scoreCount (){
 push()
-textSize (6) // helper text
+textSize (12) // helper text
 text ("Your Score", width/2, height*0.90)
 text (numGoals, width/2, height*0.95)
 pop()
