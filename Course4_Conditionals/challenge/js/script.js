@@ -8,13 +8,22 @@
 
 "use strict";
 
+// calling all variables
+let d = 0; 
+let overlap = 0;
+let dGoal = 0;
+let overlapGoal = 0;
+let numGoals = 0
+
+// info about the puck
 const puck = {
   x: 200,
   y: 200,
-  size: 100,
+  size: 50,
   fill: "#ff0000"
 };
 
+// info about the user position
 const user = {
   x: undefined, // will be mouseX
   y: undefined, // will be mouseY
@@ -22,42 +31,47 @@ const user = {
   fill: "#000000"
 };
 
-let d = 0;
-let overlap = 0;
+// info about the goal
+const target = {
+  x: 200,
+  y: 50,
+  size: 100,
+  alpha: 50,
+  sto: "#3D3522",
+};
 
-/**
- * Create the canvas
- */
+
+// create canvas
 function setup() {
   createCanvas(400, 400);
-
 }
-
-/**
- * Move the user circle, check for overlap, draw the two circles
- */
+// draw runs at 60 fps
 function draw() {
-  background("#aaaaaa");
+  background("#aaaaaa", 20); // background
   
   // Move user circle
-  moveUser();
+  moveUser(); // this functions moves to mousex, mousey
 
-  //
+// Calculate distance between puck and the user 
+    d = dist(user.x, user.y, puck.x, puck.y); 
+    overlap = (d < user.size/2 + puck.size/2); // compare radius of the two 
 
-
-// Calculate distance between circles' centres
-    d = dist(user.x, user.y, puck.x, puck.y);
-    overlap = (d < user.size/2 + puck.size/2);
+// Calculate distance between puck and the target
+    dGoal = dist(puck.x, puck.y, target.x, target.y);
+    overlapGoal = (dGoal < puck.size/2 + target.size/2);
   
 // if overlap is true, then call movePuck
-if (overlap === true) {
+if (overlap === true && d<85) {
   movePuck();
 }
-  // Draw the user and puck
-  drawUser();
-  drawPuck();
-  debugText ();
 
+if (overlapGoal === true) {scoreGoal();}
+else {target.fill = "#3D3522"} // if i didn't overlap w/ the target then make sure i reset to my original color
+
+    drawPuck();
+    drawUser();  // Draw the user and puck
+    drawTarget();
+    scoreCount ();
 }
 
 /**
@@ -66,7 +80,6 @@ if (overlap === true) {
 function moveUser() {
   user.x = mouseX;
   user.y = mouseY;
-  console.log(event);
 }
 
 /**
@@ -91,28 +104,39 @@ function drawPuck() {
   pop();
 }
 
-
-
-
+// this function is called to move the puck if they end up overlapping.
 function movePuck(){
-// so, the distance between the x of the mouse and the puck
-puck.x = puck.x + (puck.x-user.x)*0.05 * abs(cos(frameCount*0.01))
-puck.y = puck.y + (puck.y-user.y)*0.05 * abs(cos(frameCount*0.01))
+puck.x = puck.x + (puck.x-user.x)/10 * abs(cos(1/puck.x*0.01))
+puck.y = puck.y + (puck.y-user.y)/10 * abs(cos(1/puck.x*0.01))
 //puck.y = puck.y+random(-1, 1)
 }
-   
 
+function drawTarget() {
+  push();
+  noStroke();
+  fill(target.fill, target);
+  ellipse(target.x, target.y, target.size);
+  pop();
+}
+
+
+function scoreGoal() {
+    push()
+    target.fill = "#386150"
+    target.x = random(50, 350)
+    target.y = random (50, 350)
+    numGoals = numGoals + 1
+    pop()
+}
 // //Example: movingY = 400 + 20 * sin(frameCount * 0.05);
 //400 is the base position
 //20 is the movement  amplitude. <- defined here
 //0.05 controls the speed. <- defined here
 
-
-
-function debugText (){
+function scoreCount (){
 push()
 textSize (6) // helper text
-text (overlap, width/2, height*0.95)
-text (d, width/2, height*0.90)
+text ("Your Score", width/2, height*0.90)
+text (numGoals, width/2, height*0.95)
 pop()
 }
