@@ -108,13 +108,15 @@ function drawPuck() {
 function movePuck(){
 puck.x = puck.x + (puck.x-user.x)/10 * abs(cos(1/puck.x*0.01))
 puck.y = puck.y + (puck.y-user.y)/10 * abs(cos(1/puck.x*0.01))
-//puck.y = puck.y+random(-1, 1)
 }
 
 function drawTarget() {
   push();
-  noStroke();
-  fill(target.fill, target);
+  target.x = target.x + random (-1, 1)
+  target.y = target.y + random (-1, 1)
+  target.size = target.size + 1 * sin(frameCount*0.05)
+  stroke(target.fill);
+  noFill()
   ellipse(target.x, target.y, target.size);
   pop();
 }
