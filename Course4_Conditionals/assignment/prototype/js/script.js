@@ -6,18 +6,18 @@
  */
 
 // To make this happen, I need a few things: 
-// 1) i need 2 similar curves that are separate from each other
+// 1) i need 2 similar curves that are separate from each other DONE
 // 2) my characters need to move 'down' the river without collision
 
 "use strict";
 
-// let's just start by creating a bezier curve
-// info about the top shoreline
+//** calling variables so they exist *//
 
-// calling varaibles so they exist
 let shoreCurve;
 let weights;
+let water;
 
+//** color pallette *//
 
 const myColors = {
   background: "#D6D5C9", // dust grey
@@ -26,18 +26,18 @@ const myColors = {
 // potential alternatives:  #0A100D = onyx, #B9BAA3 = ash grey
 }
 
-
-// create canvas
+/** Setup create canvas & do some math on the base positions **/ 
 function setup() {
   createCanvas(displayHeight, displayHeight); // square based on display height..
   background(myColors.background); // background
+  angleMode(DEGREES); // to calculate the rotation style
   
-// controls to easily impact shape.
+// These are controls to easily impact shape based on vraibal
 weights = { // to easily control the weight of movement
+
     shoreRandom: 0.04, // % random of height/width for the shore curves
     shoreMargin: 0.4, // how far from the origin can the shore be before randomization
-    secondShore: height*0.15, // the distance between both shores, also influenced by random
-    secondShoreRandom: 0.02,
+    secondShore: height*0.25*random(0.95, 1.05), // the distance between both shores, also influenced by random
   } 
 
   shoreCurve = { // this will define the curve using the weights above.
@@ -53,20 +53,19 @@ weights = { // to easily control the weight of movement
 };
 }
 
-
 // draw runs at 60 fps
 function draw() {  
   background(myColors.background); // background
-  drawShoreline() // displays the shoreline
+  drawShoreline() // displays the shorelines
 }
 
 /**
- * Displays the shoreline 
+ * Displays the shorelines
  */
 function drawShoreline() {
   push();
   stroke(myColors.shore);
-  strokeCap(PROJECT);
+  strokeCap(SQUARE);
   noFill()
   strokeWeight(10);
   bezier( // this is the control curve
@@ -77,7 +76,7 @@ function drawShoreline() {
   );
    bezier( // this is the second shore
     shoreCurve.startX-weights.secondShore, shoreCurve.startY-weights.secondShore,  // starting point
-    shoreCurve.control1X-weights.secondShore, shoreCurve.control1Y+weights.secondShore,    // first control point
+    (shoreCurve.control1X-weights.secondShore), shoreCurve.control1Y+weights.secondShore,    // first control point
     shoreCurve.control2X-weights.secondShore, shoreCurve.control2Y-weights.secondShore, // second control point
     shoreCurve.endX-weights.secondShore,shoreCurve.endY+weights.secondShore   // ending point
   );
