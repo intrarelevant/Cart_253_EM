@@ -20,10 +20,10 @@ let waterPos;
 //** color pallette *//
 
 const myColors = {
-  background: "#D6D5C9", // dust grey
-  shore: "#7796CB", // wisteria blue
-  water: "#5C81C1", // glaucous
-  debug: "#0A100D" // onyx
+  background: "#D6D5C9",
+  shore:  "rgba(185, 186, 163, 0.8)",
+  water: "rgba(174, 207, 223, 150)",
+  feedback: "rgba(214, 213, 201, 0.001)"
 // potential alternatives:  #0A100D = onyx, #B9BAA3 = ash grey
 }
 
@@ -32,7 +32,6 @@ function setup() {
 
   createCanvas(displayHeight, displayHeight); // square based on display height..
   background(myColors.background); // background
-  angleMode(DEGREES); // to calculate the rotation style
   
 // These are controls to easily impact shape based on Variables
 weights = { 
@@ -56,23 +55,73 @@ weights = {
     control2Y: height*weights.shoreMargin+random(-1*weights.shoreRandom*width, weights.shoreRandom*height)
 };
 
+// to find the midpoint of the curve
+shoreCurve.middleX = bezierPoint(shoreCurve.startX, shoreCurve.control1X, shoreCurve.control2X,shoreCurve.endX,0.5);
+shoreCurve.middleY = bezierPoint(shoreCurve.startY, shoreCurve.control1Y, shoreCurve.control2Y,shoreCurve.endY,0.5);
+
 // starting position for the water
   waterPos = {
     x: shoreCurve.startX-(0.5*weights.secondShore), // halfway between both curves
     y: 100,
-    size: 20,
+    size: 45,
   };
 }
 
 // draw runs at 60 fps
 function draw() {  
-  background(myColors.background); // background
+  background(myColors.feedback); // background
+
+  // debugDrawPoints () // shows the points 
   drawShoreline() // displays the shorelines
-  debugDrawPoints () // shows the points 
-  drawWater ()
+  drawWater () // draws the character we want to move
+
+// add some motion to the shore... 
+shoreCurve.startX = shoreCurve.startX + random(0,5)*cos(frameCount*0.05);
+shoreCurve.startY = shoreCurve.startY + random(0,2)*sin(frameCount*0.05);
+shoreCurve.endX = shoreCurve.endX + random(0,2)*sin(frameCount*0.05)*-1;
+shoreCurve.endY = shoreCurve.endY + random(0,5)*cos(frameCount*0.05)*-1;
+
+// check if out of bounds
+if (waterPos.y >= height) {
+    waterPos.x = shoreCurve.startX - 0.5 * weights.secondShore;
+    waterPos.y = 0;
+  }
+// look for the water in zone 1, please refer to sketch in journal entry
+// Zone 1
+else if (
+  waterPos.y < shoreCurve.startY &&
+  waterPos.x > shoreCurve.startX - weights.secondShore &&
+  waterPos.x < shoreCurve.startX
+) {
+  waterPos.x += 0.1 + random(0,2)*sin(frameCount*0.1);
+  waterPos.y += 1.5;
+}
+
+// Zone 2
+else if (
+  waterPos.y >= shoreCurve.startY &&
+  waterPos.y <= shoreCurve.middleY
+) {
+  waterPos.x += 0.6 + random(0,2)*sin(frameCount*0.1);
+  waterPos.y += 1.5;
+}
+
+// Zone 3
+else if (
+  waterPos.y > shoreCurve.middleY
+) {
+  waterPos.x += 1 + random(0,2)*sin(frameCount*0.1);
+  waterPos.y += 1.5;
+}
   
+// Safety fallback
+else {
+  waterPos.y += 1;
+}
 
 }
+
+
 
 /**
  * Displays the shorelines
@@ -80,7 +129,7 @@ function draw() {
 function drawShoreline() {
   push();
   stroke(myColors.shore);
-  strokeCap(SQUARE);
+  noSmooth()
   noFill()
   strokeWeight(10);
   bezier( // this is the control curve
@@ -104,7 +153,8 @@ function drawShoreline() {
 
 function drawWater() {
   push();
-  textSize(waterPos.size);
+  fill(myColors.water);
+  textSize(waterPos.size+random(-1,1));
   text('⌇', waterPos.x, waterPos.y);
   pop();
 }
@@ -112,23 +162,26 @@ function drawWater() {
 
 /**
  * function to debug and show the points
- */
+ 
 function debugDrawPoints () {
   push();
-  stroke(myColors.debug);
+  stroke("red");
   noFill()
-  strokeWeight(3);
+  strokeWeight(10);
 // first curve
     point(shoreCurve.startX, shoreCurve.startY);  // starting point
     point(shoreCurve.control1X, shoreCurve.control1Y);    // first control point
     point(shoreCurve.control2X, shoreCurve.control2Y); // second control point
     point(shoreCurve.endX,shoreCurve.endY);    // ending point
 // second curve
+  stroke("green");
     point(shoreCurve.startX-weights.secondShore, shoreCurve.startY-weights.secondShore);  // starting point
     point(shoreCurve.control1X-weights.secondShore, shoreCurve.control1Y+weights.secondShore);    // first control point
     point(shoreCurve.control2X-weights.secondShore, shoreCurve.control2Y-weights.secondShore); // second control point
     point(shoreCurve.endX-weights.secondShore,shoreCurve.endY+weights.secondShore);   // ending point
+  stroke("blue")
+    point(shoreCurve.middleX, shoreCurve.middleY);
   pop();
 }
-
+*/
 
