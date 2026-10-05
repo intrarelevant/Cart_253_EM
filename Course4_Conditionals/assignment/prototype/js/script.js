@@ -20,10 +20,10 @@ let waterPos;
 //** color pallette *//
 
 const myColors = {
-  background: "#D6D5C9",
-  shore:  "rgba(185, 186, 163, 0.8)",
-  water: "rgba(174, 207, 223, 150)",
-  feedback: "rgba(214, 213, 201, 0.001)"
+  background: "#9EA3B0",
+  shore:  "#0D1F2D",
+  water: "#546A7B",
+  feedback: "rgba(158, 163, 176, 0.001)"
 // potential alternatives:  #0A100D = onyx, #B9BAA3 = ash grey
 }
 
@@ -44,9 +44,9 @@ weights = {
 // this will define the curve using the weights above.
 
   shoreCurve = { 
-    startX: height*weights.shoreMargin, // not adding random allows to always see the curve and keep the same general shape
+    startX: 75+height*weights.shoreMargin, // not adding random allows to always see the curve and keep the same general shape
     startY: height*weights.shoreMargin+random(-1*weights.shoreRandom*width, weights.shoreRandom*height),
-    endX: height*(1-weights.shoreMargin)+random(-1*weights.shoreRandom*width, weights.shoreRandom*height),
+    endX: 100+height*(1-weights.shoreMargin)+random(-1*weights.shoreRandom*width, weights.shoreRandom*height),
     endY: width*(1-weights.shoreMargin), /// not adding random to always see the curve and keep the same general shape
     
     control1X: width*weights.shoreMargin+random(-1*weights.shoreRandom*width, weights.shoreRandom*height),
@@ -62,8 +62,8 @@ shoreCurve.middleY = bezierPoint(shoreCurve.startY, shoreCurve.control1Y, shoreC
 // starting position for the water
   waterPos = {
     x: shoreCurve.startX-(0.5*weights.secondShore), // halfway between both curves
-    y: 100,
-    size: 45,
+    y: 150,
+    size: 30,
   };
 }
 
@@ -76,15 +76,15 @@ function draw() {
   drawWater () // draws the character we want to move
 
 // add some motion to the shore... 
-shoreCurve.startX = shoreCurve.startX + random(0,5)*cos(frameCount*0.05);
+shoreCurve.startX = shoreCurve.startX + random(0,2)*cos(frameCount*0.05);
 shoreCurve.startY = shoreCurve.startY + random(0,2)*sin(frameCount*0.05);
 shoreCurve.endX = shoreCurve.endX + random(0,2)*sin(frameCount*0.05)*-1;
-shoreCurve.endY = shoreCurve.endY + random(0,5)*cos(frameCount*0.05)*-1;
+shoreCurve.endY = shoreCurve.endY + random(0,2)*cos(frameCount*0.05)*-1;
 
-// check if out of bounds
-if (waterPos.y >= height) {
-    waterPos.x = shoreCurve.startX - 0.5 * weights.secondShore;
-    waterPos.y = 0;
+// check if out of bounds & reset if so
+if (waterPos.y >= height-150) {
+    waterPos.x = shoreCurve.startX - 0.5 * weights.secondShore + random (-100, 100);
+    waterPos.y = 150;
   }
 // look for the water in zone 1, please refer to sketch in journal entry
 // Zone 1
@@ -94,7 +94,7 @@ else if (
   waterPos.x < shoreCurve.startX
 ) {
   waterPos.x += 0.1 + random(0,2)*sin(frameCount*0.1);
-  waterPos.y += 1.5;
+  waterPos.y += 1;
 }
 
 // Zone 2
@@ -103,7 +103,7 @@ else if (
   waterPos.y <= shoreCurve.middleY
 ) {
   waterPos.x += 0.6 + random(0,2)*sin(frameCount*0.1);
-  waterPos.y += 1.5;
+  waterPos.y += 1;
 }
 
 // Zone 3
@@ -111,7 +111,7 @@ else if (
   waterPos.y > shoreCurve.middleY
 ) {
   waterPos.x += 1 + random(0,2)*sin(frameCount*0.1);
-  waterPos.y += 1.5;
+  waterPos.y += 1;
 }
   
 // Safety fallback
@@ -129,7 +129,6 @@ else {
 function drawShoreline() {
   push();
   stroke(myColors.shore);
-  noSmooth()
   noFill()
   strokeWeight(10);
   bezier( // this is the control curve
@@ -155,7 +154,7 @@ function drawWater() {
   push();
   fill(myColors.water);
   textSize(waterPos.size+random(-1,1));
-  text('⌇', waterPos.x, waterPos.y);
+  text('⁘', waterPos.x, waterPos.y);
   pop();
 }
 
