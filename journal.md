@@ -1,3 +1,19 @@
+# October 5th - Assignment - Conditionals - Thoughts on my Prototypes
+
+For my first prototype, I was thinking back to the challenge and the sense of collision. I wanted to work with this; so, I decided to make something like water flowing through a river. Unfortunately, I used Beziers for this, and since we haven't yet seen loops or sampling in class yet, I couldn't do a sample of points accross the curve. So I decided instead to create various zones using the curve start/end points as well as the midpoint to designate various zones, which eventually just change the direction of the 'water' like so:
+
+![Inspiration image for prototype 1](/assets/conditionals_process.jpg)
+*I ended up using the midpoint rather than the control points. 
+
+I did get it to work, but in the end as I kept adding randomization elements to the 'water' and to the 'shore'. Since the shore moves, the water doesn't end up staying within the confines of the shore all the time. I console myself by knowing I will enventually be able to do this, and also by the fact that every river, I'm sure, has flooded at some point. Still, I find the overall visual effect to be quite satisfying to watch, as the water ends up weaving a lattice, and the tide eventually comes in.
+
+The second prototype is a bit less sophisticated. Depending on the user mouse position various lines, or threads, are generated in different colors. As the user moves their mouse around the viewport it will eventually create a square pattern to form a tartan. It also becomes similar to a circuit board in a way... 
+
+
+
+
+
+
 
 # September 28nd - Assignment - Instructions - Thoughts on my Prototypes
 
