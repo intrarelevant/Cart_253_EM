@@ -9,9 +9,12 @@
 
 // Current score
 let score = 0;
-
 // Is the game over?
 let gameOver = false;
+// lose reason
+let loseReason
+
+
 
 /**
  * Create the canvas
@@ -39,9 +42,39 @@ function draw() {
 
   if (mouseIsPressed){ // step 2 for lose
     lose()
+    loseReason = 'You lost because you clicked on the mouse...'
   }
-
+  if (keyIsPressed){
+    lose()
+    loseReason = 'You lost because you pressed a key...'
+  }
+  function keyReleased() {
+  lose()
+  loseReason = 'You lost because you released a key...'
 }
+  if (focused === false){
+  lose()
+  loseReason = 'You lost because you unfocused the browser window...'}
+  // firefox navigator online/offline
+if (navigator.onLine) {
+  console.log("online");
+} 
+else {
+  console.log("offline") 
+  loseReason ='You lose because you went offline...';
+}
+}
+
+// calling other functions
+function mouseMoved() {
+  lose()
+  loseReason = 'You lost because you moved the mouse...'
+}
+function mouseWheel() {
+  lose()
+  loseReason = 'You lost because you scrolled the mouse wheel...'
+}
+
 
 /**
  * Show the game over message if needed, and the current score
@@ -53,7 +86,10 @@ function displayUI() {
     background(77, 36, 61);
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
-    text("‧₊˚ ┊You lose𓏵‧₊˚ ┊", width/2, height/3);
+    fill(236, 220, 201)
+    text("₊˚ You lose 𓏵‧₊", width/2, height/3);
+    textSize(12);
+    text(loseReason, width/2, height/3*2);
     pop();
   }
   displayScore();
@@ -67,6 +103,9 @@ function displayScore() {
   textSize(48);
   textStyle(BOLD);
   textAlign(CENTER, CENTER);
+  if (gameOver){
+  fill (208, 169, 143)
+  }
   text(floor(score), width/2, height/2);
   pop();
 }
@@ -74,3 +113,4 @@ function displayScore() {
 function lose(){
   gameOver = true;
 }
+
