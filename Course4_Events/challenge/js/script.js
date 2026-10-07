@@ -20,6 +20,10 @@ function setup() {
   createCanvas(400, 400);
 }
 
+function lose(){
+  gameOver = true;
+}
+
 /**
  * Update the score and display the UI
  */
@@ -32,6 +36,11 @@ function draw() {
     score += 0.05;
   }
   displayUI();
+
+  if (mouseIsPressed){ // step 2 for lose
+    lose()
+  }
+
 }
 
 /**
@@ -41,9 +50,10 @@ function displayUI() {
   if (gameOver) {
     push();
     textSize(48);
+    background(77, 36, 61);
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
-    text("You lose!", width/2, height/3);
+    text("‧₊˚ ┊You lose𓏵‧₊˚ ┊", width/2, height/3);
     pop();
   }
   displayScore();
@@ -59,4 +69,8 @@ function displayScore() {
   textAlign(CENTER, CENTER);
   text(floor(score), width/2, height/2);
   pop();
+}
+
+function lose(){
+  gameOver = true;
 }
