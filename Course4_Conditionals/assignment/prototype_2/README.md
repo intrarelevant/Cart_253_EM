@@ -10,6 +10,7 @@ Erica Mercier
 ## Description
 
 lines appear at the cursor position to allow the user to weave a tartan pattern over time.
+
 ## Attribution
 
 > - This project uses [p5.js](https://p5js.org).
