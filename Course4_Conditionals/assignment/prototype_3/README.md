@@ -9,11 +9,10 @@ Erica Mercier
 
 ## Description
 
-text characters move through a curve defined by a bezier curve, like they're flowing through a river.
+click the mouse to produce a ripple effect. this is an experiment that could be combined with my previous prototype.
 
 ## Attribution
 
-> - Inspired by a digital poster by Houth Graphic Design for the 24-25 Dongxing Canal Light Art Festival, [here](https://media.itsnicethat.com/original_images/Houth-Graphic-Design-Discover-itsnicethat-7-ezgif.com-video-to-gif-convert.gif)
 > - This project uses [p5.js](https://p5js.org).
 > - Following instructions [here](https://pippinbarr.com/cart253/assignments/challenges/conditionals/)
 

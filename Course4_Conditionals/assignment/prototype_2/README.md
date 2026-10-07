@@ -9,11 +9,9 @@ Erica Mercier
 
 ## Description
 
-text characters move through a curve defined by a bezier curve, like they're flowing through a river.
-
+lines appear at the cursor position to allow the user to weave a tartan pattern over time.
 ## Attribution
 
-> - Inspired by a digital poster by Houth Graphic Design for the 24-25 Dongxing Canal Light Art Festival, [here](https://media.itsnicethat.com/original_images/Houth-Graphic-Design-Discover-itsnicethat-7-ezgif.com-video-to-gif-convert.gif)
 > - This project uses [p5.js](https://p5js.org).
 > - Following instructions [here](https://pippinbarr.com/cart253/assignments/challenges/conditionals/)
 
