@@ -5,10 +5,6 @@
  * text characters move through a curve defined by a bezier curve, like they're flowing through a river.
  */
 
-// To make this happen, I need a few things: 
-// 1) i need 2 similar curves that are separate from each other DONE
-// 2) my characters need to move 'down' the river without collision
-
 "use strict";
 
 //** calling variables so they exist *//
