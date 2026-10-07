@@ -11,6 +11,8 @@ This is E_M's coursework and journal for CART253; I'll be using this page as a r
 - Class 2, Instructions: [Prototype 1, Halftone print](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_1_print/), [Prototype 2, Seascape](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_2_sea/index.html), and [Prototype 3, Fibonnaci](https://intrarelevant.github.io/Cart_253_EM/Course2_Instructions/Prototype_3_squares/index.html)
 
 # In-Class Challenges
+- Class 4: [do anything you lose](https://intrarelevant.github.io/Cart_253_EM/Course4_Events/challenge/index.html)
+)
 - Class 3: [mr anger D:<](https://intrarelevant.github.io/Cart_253_EM/Course3_Variables/challenge/index.html)
 - Class 2: [My gorgeous landscape <3](/Course2_Instructions/challenge/index.html)
 - Class 1: this page & the journal linked above!
