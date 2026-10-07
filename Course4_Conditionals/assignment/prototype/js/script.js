@@ -23,7 +23,7 @@ const myColors = {
   background: "#9EA3B0",
   shore:  "#0D1F2D",
   water: "#546A7B",
-  feedback: "rgba(158, 163, 176, 0.001)"
+  feedback: "rgba(158, 163, 176, 0.002)"
 // potential alternatives:  #0A100D = onyx, #B9BAA3 = ash grey
 }
 
@@ -35,7 +35,6 @@ function setup() {
   
 // These are controls to easily impact shape based on Variables
 weights = { 
-
     shoreRandom: 0.04, // % random of height/width for the shore curves
     shoreMargin: 0.35, // how far from the origin can the shore be before randomization
     secondShore: height*0.25*random(0.95, 1.05), // the distance between both shores, also influenced by random
@@ -118,13 +117,10 @@ else if (
 else {
   waterPos.y += 1;
 }
-
 }
 
-
-
 /**
- * Displays the shorelines
+ * Display the shorelines
  */
 function drawShoreline() {
   push();
