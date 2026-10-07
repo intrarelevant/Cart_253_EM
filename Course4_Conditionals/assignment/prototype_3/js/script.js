@@ -15,21 +15,26 @@
 let weights;
 let ripple;
 
+// these will store the pos of the last mouse press
+let lastPressX;
+let lastPressY;
+
 //** color pallette *//
 
 const myColors = {
-  background: "215, 214, 214",
-  shore:  "#0D1F2D",
-  water: "#546A7B",
-  feedback: "rgba(158, 163, 176, 0.001)"
+  backgroundFull : "rgba(245, 230, 232, 1)",
+  backgroundFeedback : "rgba(245, 230, 232, 0.2)",
+  rippleStart: "rgba(170, 161, 200, 1)",
+  rippleEnd:"rgba(25, 42, 81, 1)",
+  }
 // potential alternatives:  #0A100D = onyx, #B9BAA3 = ash grey
-}
+
 
 /** Setup create canvas & do some math on the base positions **/ 
 function setup() {
   angleMode(DEGREES);
   createCanvas(displayHeight*0.8, displayHeight*0.8); // square based on display height..
-  background(myColors.background); // background
+  background(myColors.backgroundFull); // background
   
   
 // These are controls to easily impact shape based on Variables
@@ -48,19 +53,27 @@ weights = {
     start:0,
     stop: 360,
     mode: 'OPEN',
+    sizeStatic:100,
   };
+}
+
+function mousePressed() {
+  lastPressX = mouseX;
+  lastPressY = mouseY;
 }
 
 // draw runs at 60 fps
 function draw() {  
-  background(myColors.feedback); // background
-  ripple.x = mouseX;
-  ripple.y = mouseY;
+  background(myColors.backgroundFeedback); // background
+  ripple.x = lastPressX;
+  ripple.y = lastPressY;
   ripple.size = ripple.size + weights.growth;
-    drawRipple ()
+  drawRipple ()
 }
 
 function drawRipple() {
   noFill()
+  stroke
   arc(ripple.x, ripple.y, ripple.size, ripple.size, ripple.start, ripple.stop, ripple.mode);
 }
+
