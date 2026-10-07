@@ -14,6 +14,7 @@
 //** calling variables so they exist *//
 let weights;
 let ripple;
+let rippleExist = false;
 
 // these will store the pos of the last mouse press
 let lastPressX;
@@ -39,8 +40,9 @@ function setup() {
   
 // These are controls to easily impact shape based on Variables
 weights = { 
-  growth: 0.5,
-  life: 300,
+  growth: 0.4,
+  life: 200,
+  sizeRandom: 20,
   } 
 
 // starting values
@@ -49,31 +51,43 @@ weights = {
   ripple = {
     x:width/2, // will become mouseX
     y: height/2, // will become mouseY
-    size:100,
+    size:50,
     start:0,
     stop: 360,
     mode: 'OPEN',
-    sizeStatic:100,
+    sizeStatic:50,
+    remaining: 0, 
   };
 }
 
+// when the mouse button is pressed, set the ripple location to the centre, and reset the size of the ripple
 function mousePressed() {
-  lastPressX = mouseX;
-  lastPressY = mouseY;
+  ripple.x = mouseX;
+  ripple.y = mouseY; // set the centre of the circle to the mouse XY
+  ripple.size = ripple.sizeStatic; // reset the h/w of the circle
+  ripple.remaining = weights.life; // this becomes a timer of 300 frames
+  rippleExist = true; // draws the ripple
 }
 
 // draw runs at 60 fps
 function draw() {  
   background(myColors.backgroundFeedback); // background
-  ripple.x = lastPressX;
-  ripple.y = lastPressY;
-  ripple.size = ripple.size + weights.growth;
-  drawRipple ()
-}
+  ripple.size = ripple.size + weights.growth * log(frameCount)
+  if (ripple.remaining <= 0) { // if life is over, reset
+      rippleExist = false;
+    }
+
+  if (rippleExist==true) { // when the mouse is pressed, this is set to TRUE
+    ripple.size += weights.growth; // the size increases
+    ripple.remaining--; // life reduces by 1 per frame
+    drawRipple();
+    }
+  }
+
 
 function drawRipple() {
-  noFill()
-  stroke
-  arc(ripple.x, ripple.y, ripple.size, ripple.size, ripple.start, ripple.stop, ripple.mode);
+  noFill();
+  stroke(myColors.rippleStart);
+  arc(ripple.x, ripple.y, ripple.size + weights.sizeRandom, ripple.size+ weights.sizeRandom, ripple.start, ripple.stop, ripple.mode);
 }
 
