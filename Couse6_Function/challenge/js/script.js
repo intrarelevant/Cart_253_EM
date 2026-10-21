@@ -1,6 +1,6 @@
 /**
  * Bouncy Ball Ball Bonanza
- * Erica
+ * Erica Mercier
  * 
  * The starting point for a ball-bouncing experience of
  * epic proportions!
@@ -16,6 +16,17 @@ const ball = {
     height: 10,
     velocity: {
         x: 1,
+        y: 1
+    }
+};
+
+const ballB = {
+    x: 100,
+    y: 20,
+    width: 10,
+    height: 10,
+    velocity: {
+        x: 0.5,
         y: 1
     }
 };
@@ -42,13 +53,17 @@ function setup() {
 function draw() {
     background("#87ceeb");
 
-    movePaddle(paddle);
-    moveBall(ball);
-
-    handleBounce(ball, paddle);
-
     drawPaddle(paddle);
+    movePaddle(paddle);
+
+    moveBall(ball);
+    moveBall(ballB)
+
+    handleBounce(ball);
+    handleBounce(ballB);
+
     drawBall(ball);
+    drawBall(ballB);
 }
 
 /**
@@ -84,7 +99,9 @@ pop()
 /**
  * Bounces the provided ball off the provided paddle
  */
-function handleBounce(ball, paddle) {
+
+
+function handleBounce(ball) {
 if (checkOverlap(ball,paddle) === true){ // check if the overlap happened
   ball.velocity.y = ball.velocity.y*-1} // if the values are overlapping, reverse the direction
 
@@ -96,6 +113,7 @@ if (checkOverlap(ball,paddle) === true){ // check if the overlap happened
   ball.velocity.y = 1;
 } 
 }
+
 
 /**
  * Draws the specified ball on the canvas

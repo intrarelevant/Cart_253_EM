@@ -3,7 +3,7 @@
 
 ## Description
 
-A game where your score increases so long as you do nothing.
+a game of bouncing the ball on the paddle :3
 
 ## Attribution
 
