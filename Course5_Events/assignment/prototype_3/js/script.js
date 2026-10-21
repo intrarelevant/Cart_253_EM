@@ -1,110 +1,80 @@
 /**
- * prototype for a music system
+ * prototype for a typography system
  * Erica Mercier
  * 
- * when clicking, we draw a staff with a musical character 
+ * write, and use the sliders to customize the text appearance
  */
 
 "use strict";
 
 //** calling variables so they exist *//
-let weights;
-let shape;
-let countSegments = 0;
-let shapeExist = false;
-let displayHelpText = true;
-let char = ['𝄢','𝄞','♭','♮','♯','𝄁'];
-
-// these will store the pos of the last mouse press
-let lastPressX;
-let lastPressY;
+// these will store the keyboard press and create sliders for user control 
+let keyPress;
+let char = 'A';
+let charNum = 1;
+let sliderBlur;
+let sliderShear;
 
 //** color pallette *//
 
 const myColors = {
   backgroundFull : "#F0EFF4",
   mainLight: "#9E829C",
-  mainDark:"#291528",
+  mainDark:"#1E2019",
   }
-// potential alternatives:  #0A100D = onyx, #B9BAA3 = ash grey
 
 /** Setup create canvas & do some math on the base positions **/ 
 function setup() {
   angleMode(DEGREES);
-  createCanvas(displayHeight*0.8, displayHeight*0.8); // square based on display height..
+  createCanvas(displayHeight*0.8, displayHeight*0.8); // square based on display height.
   background(myColors.backgroundFull); // background
-  
-// These are controls to easily impact shape based on variables
-weights = { 
-  sizeIncrement: 1,
-  shapeRandom:35,
-  numSegments: 3
-  } 
 
-// starting values
-
-  shape = {
-    x:width/2, // will become mouseX
-    y:height/2, // will become mouseY
-    xNote: height/2,// will become mouseX
-    yNote:height/2, // will become mouseY
-    peakX: width/2,
-    peakY: width/2,
-    size: 40,
-    char:['𝄞']
-    
-  };
+// create a slider to control blur
+  sliderBlur = createSlider(0, 25, 0);
+  sliderBlur.position(10, height / 9);
+  sliderBlur.size(100);
+  sliderBlur.changed(renderText);
+// create a slider to control shear
+  sliderShear = createSlider(-10, 10, 0);
+  sliderShear.position(10, height / 9 * 2);
+  sliderShear.size(100);
+  sliderShear.changed(renderText);
+  frameRate(20);
+  renderText();
 }
 
-// when the mouse button is pressed, set the shape location
-// the shape's peak will be 
-function mousePressed() {
-  shapeExist = true; 
-  displayHelpText = false;
-  shape.x = mouseX;
-  // the shape stays near one of numsegment start points
-  shape.y = Math.round(map(mouseY, 0, height, 0, weights.numSegments))/weights.numSegments*height*0.90+random(-1*weights.shapeRandom, weights.shapeRandom);
-  shape.peakX = mouseX;
-  // this equation is so that the bezier curve is at the mousexy correctly
-  shape.peakY = (8*mouseY - shape.y - shape.y) / 6;
-  shape.xNote = mouseX;
-  shape.yNote = mouseY;
-  countSegments = countSegments+1;
-  shape.char = random(char)
+function renderText() {
+  background(myColors.backgroundFull);
+  if (char.length === 0) ;//avoid divide by 0 
+  textSize(height / char.length);
+  textFont('Times New Roman');
+  fill(myColors.mainDark)
+  textAlign(CENTER, CENTER);
+  text(char, width / 2, height / 2);
+  const b = sliderBlur.value();
+  if (b > 0) {filter(BLUR, b);}
 }
 
-function mouseReleased() {
-  shapeExist = false; 
-}
-
-// draw runs at 60 fps
-function draw() {  
-  if (shapeExist==true) { // when the mouse is pressed, this is set to TRUE
-    drawShape();
-    displayHelpText == false;
-    }
-
-    if (countSegments > 12) {
-    background(myColors.backgroundFull); // background
-    countSegments = 0;
-    }
-
+function keyTyped() {
+if (/^[a-z0-9 ]$/i.test(key)) {
+    char += key.toUpperCase();
+    charNum = char.length;
+    renderText();
   }
-  
-function drawShape() {
-  push() // first section draws the bezier curve
-  stroke(myColors.mainDark);
-  noFill()
-   bezier( // this is the second shore
-    0, shape.y,  // starting point
-    shape.peakX * 2 / 3, shape.peakY,  // first control point
-    width-(width-shape.peakX) * 2 / 3, shape.peakY,  // second control point
-    width, shape.y   // ending point
-  );
-  pop()
-  push()
-  stroke(myColors.mainLight);
-  textSize(shape.size)
-  text(shape.char, shape.xNote, shape.yNote)
-  pop()
+}
+
+function keyPressed(event) {
+  if (event.key === "Backspace") {
+    event.preventDefault();
+
+    char = char.slice(0, -1);
+    charNum = char.length;
+    renderText();
+    return false;
+  }
+}
+
+function draw() {
+   const s = sliderShear.value();
+  if (s != 0) {shearX(s); shearY(s);}
 }

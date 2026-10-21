@@ -26,7 +26,6 @@ const myColors = {
   mainLight: "#9E829C",
   mainDark:"#291528",
   }
-// potential alternatives:  #0A100D = onyx, #B9BAA3 = ash grey
 
 /** Setup create canvas & do some math on the base positions **/ 
 function setup() {
