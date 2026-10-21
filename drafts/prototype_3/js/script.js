@@ -5,11 +5,6 @@
  * when the bell goes to the edge, it triggers a gong 
  */
 
-// there are a few boxes or 'chimes.. 
-// when the user moves the mouse they determine the direction of the 'wind'
-
-// https://p5js.org/tutorials/coordinates-and-transformations/
-
 "use strict";
 
 //** calling variables so they exist *//
@@ -45,11 +40,9 @@ function draw() {
 
 function drawChimes() {
   push()
-  let chimeYrotation = map(mouseX, 0, width, -1*w.chimeRotation, w.chimeRotation); // based on the width, remap to a max rotation within 50 degrees
-  rotateY(chimeYrotation);
-  rotateX(10); // just so I can see the side
-  shearX(map(mouseX, 0, width, -1*w.chimeShear, w.chimeShear));
-  box(40, 600, 40);
-  model (chime);
+  let chimeZrotation = map(mouseX, 0, width, -1*w.chimeRotation, w.chimeRotation); // based on the width, remap to a max rotation within 50 degrees
+  rotateZ(chimeZrotation); // just so I can see the side
+  shearY(map(mouseX, 0, width, -1*w.chimeShear, w.chimeShear));
+  box(600, 40, 40);
   pop()
 }

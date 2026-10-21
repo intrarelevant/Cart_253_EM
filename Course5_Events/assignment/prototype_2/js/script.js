@@ -31,7 +31,6 @@ function setup() {
   angleMode(DEGREES);
   createCanvas(displayHeight*0.8, displayHeight*0.8); // square based on display height..
   background(myColors.backgroundFull); // background
-  frameRate(24);
   
 // These are controls to easily impact shape based on Variables
 weights = { 
@@ -60,13 +59,6 @@ function mouseReleased() {
   shapeExist = false; 
 }
 
-function mouseWheel(event) {
-  shape.size += event.delta > 0 ? 1.5 : -1.5;
-  weights.ShapeJitter += event.delta > 0 ? 50 : -50;
-  frameRate += event.delta > 0 ? -1 : 1;
-  displayHelpText == false;
-}
-
 // draw runs at 60 fps
 function draw() {  
   
@@ -77,30 +69,22 @@ function draw() {
     displayHelpText == false;
     }
 
-  if (displayHelpText == true) {
-    helpText()
-  }
   }
   
 
 
+  
+
 function drawShape() {
   push()
-  noFill();
   stroke(myColors.mainDark);
-  textSize(shape.size-5)
-  text('⭐︎', shape.x+random(weights.shapeJitter*-1,weights.shapeJitter), shape.y+random(weights.shapeJitter*-1,weights.shapeJitter))
-  stroke(myColors.mainLight);
-  textSize(shape.size)
-  text('✢', shape.x+random(weights.shapeJitter*-1,weights.shapeJitter), shape.y+random(weights.shapeJitter*-1,weights.shapeJitter))
-  pop()
-}
-
-function helpText() {
-  push()
-  noFill();
-  stroke(myColors.mainLight);
-  textSize(12)
-  text('click, drag & scroll', 100, height/10*9)
+  noFill()
+   bezier( // this is the second shore
+    0, shape.y,  // starting point
+    width/2, shape.y + 100,    // first control point
+    width/2, shape.y - 100, // second control point
+    width, shape.y   // ending point
+  );
+  
   pop()
 }
