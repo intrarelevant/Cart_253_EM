@@ -1,5 +1,14 @@
 # October 5th - Assignment - Conditionals - Thoughts on my Prototypes
 
+
+The first prototype is a simple ASCII drawing tool, using click and drag and mouse wheel functionality. It is fairly straightforward; I added in some randomization to allow the resulting drawing process to feel more sparkly.
+
+For the second prototype, I wanted to continue working with curves and having the curve appear at a specific point using math. Here, the tool acts as a music notation system, where the user Though I did not implement sound, the idea I have is the sound could play when the right point is reached, using the Bezier path function. This makes it a mix between a drawing tool and a sound making tool.
+
+
+
+# October 5th - Assignment - Conditionals - Thoughts on my Prototypes
+
 For my first prototype, I was thinking back to the challenge and the sense of collision. I wanted to work with this; so, I decided to make something like water flowing through a river. Unfortunately, I used Beziers for this, and since we haven't yet seen loops or sampling in class yet, I couldn't do a sample of points accross the curve. So I decided instead to create various zones using the curve start/end points as well as the midpoint to designate various zones, which eventually just change the direction of the 'water' like so:
 
 ![Process for conditionals](/assets/conditionals_process.jpg)
