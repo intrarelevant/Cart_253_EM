@@ -1,78 +1,110 @@
 /**
- * Buzzy the return value
+ * Bouncy Ball Ball Bonanza
  * Pippin Barr
  * 
- * Two flies that buzz around on the canvas
+ * The starting point for a ball-bouncing experience of
+ * epic proportions!
  */
 
 "use strict";
 
-// Our flies that will buzz around
-let buzzyTheFly = undefined;
-let jazzyTheFly = undefined;
-let jacuzziTheFly = undefined;
+// Our ball
+const ball = {
+    x: 300,
+    y: 20,
+    width: 10,
+    height: 10,
+    velocity: {
+        x: 0,
+        y: 10
+    }
+};
 
+// Our paddle
+const paddle = {
+    x: 300,
+    y: 280,
+    width: 80,
+    height: 10
+};
 
 /**
- * Create a canvas and setup our flies
- */
+ * Create the canvas
+*/
 function setup() {
-    createCanvas(400, 400);
-    
-    // A pretty calm fly
-    buzzyTheFly = createFly(2);
-    // A not calm fly
-    jazzyTheFly = createFly(10);
-    jacuzziTheFly = createFly(0.5)
+    createCanvas(600, 300);
 }
 
-/**
- * Creates a fly object with randomized position, default size, 
- * and provided buzziness
- */
-function createFly(buzziness) {
-    const fly = {
-        // Position (random)
-        x: random(0, width*0.8),
-        y: random(0, height*0.8),
-        // Size (default)
-        size: 30,
-        // How much to move per frame (parameter)
-        buzziness: buzziness
-    };
-    return fly;
-}
 
 /**
- * Background, move and draw buzzy
- */
+ * Move and display the ball and paddle
+*/
 function draw() {
     background("#87ceeb");
 
-    moveFly(buzzyTheFly);
-    moveFly(jazzyTheFly);
-    moveFly(jacuzziTheFly);
+    movePaddle(paddle);
+    moveBall(ball);
 
-    drawFly(buzzyTheFly);
-    drawFly(jazzyTheFly);
-    drawFly(jacuzziTheFly);
+    handleBounce(ball, paddle);
+
+    drawPaddle(paddle);
+    drawBall(ball);
 }
 
 /**
- * Move the fly passed in by updating its position
+ * Moves the paddle
  */
-function moveFly(fly) {
-    fly.x += random(-fly.buzziness, fly.buzziness);
-    fly.y += random(-fly.buzziness, fly.buzziness);
+function movePaddle(paddle) {
+
 }
 
 /**
- * Draw the fly passed in using its properties
+ * Moves the ball passed in as a parameter
  */
-function drawFly(fly) {
+function moveBall(ball) {
+
+}
+
+/**
+ * Bounces the provided ball off the provided paddle
+ */
+function handleBounce(ball, paddle) {
+
+}
+
+/**
+ * Draws the specified paddle on the canvas
+ */
+function drawPaddle(paddle) {
     push();
+    rectMode(CENTER);
     noStroke();
-    fill(0);
-    ellipse(fly.x, fly.y, fly.size);
+    fill("pink");
+    rect(paddle.x, paddle.y, paddle.width, paddle.height);
     pop();
+}
+
+/**
+ * Draws the specified ball on the canvas
+ */
+function drawBall(ball) {
+    push();
+    rectMode(CENTER);
+    noStroke();
+    fill("pink");
+    rect(ball.x, ball.y, ball.width, ball.height);
+    pop();
+}
+
+/**
+ * Returns true if rectA and rectB overlap, and false otherwise
+ * Assumes rectA and rectB have properties x, y, width and height to describe
+ * their rectangles, and that rectA and rectB are displayed CENTERED on their
+ * x,y coordinates.
+ */
+function checkOverlap(rectA, rectB) {
+  return (rectA.x + rectA.width/2 > rectB.x - rectB.width/2 &&
+          rectA.x - rectA.width/2 < rectB.x + rectB.width/2 &&
+          rectA.y + rectA.height/2 > rectB.y - rectB.height/2 &&
+          rectA.y - rectA.height/2 < rectB.y + rectB.height/2);
 }
