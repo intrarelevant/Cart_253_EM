@@ -5,9 +5,8 @@ The first prototype is a simple ASCII drawing tool, using click and drag and mou
 
 For the second prototype, I wanted to continue working with curves and having the curve appear at a specific point using math. Here, the tool acts as a music notation system, where the user Though I did not implement sound, the idea I have is the sound could play when the right point is reached, using the Bezier path function. This will make it into a hybrid sound-drawing tool.
 
-
-
-
+The final prototype is a basic typography tool that uses sliders to blur and shear the text. It is responsive to the text length, allows for alphanumeric characters only, and could be expanded on to perhaps allow the user to create a custom font set. The main thing I wasn't sure of, was how to label the sliders better. Still, it is far easier for a user to control using sliders than things like mouse position, etc.
+![events process photo](/assets/events_process.png)
 
 # October 5th - Assignment - Conditionals - Thoughts on my Prototypes
 

@@ -1,10 +1,9 @@
-# Course 4 - Conditional Challenge
+# Course 5 - Events Assignments
 
 
 ## Description
 
-Click on the canvas to create your own musical score.
-
+A basic typography tool, use the sliders to modify the text.
 ## Attribution
 
 > - This project uses [p5.js](https://p5js.org).
