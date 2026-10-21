@@ -1,6 +1,6 @@
 /**
  * Bouncy Ball Ball Bonanza
- * Pippin Barr
+ * Erica
  * 
  * The starting point for a ball-bouncing experience of
  * epic proportions!
@@ -15,8 +15,8 @@ const ball = {
     width: 10,
     height: 10,
     velocity: {
-        x: 0,
-        y: 10
+        x: 1,
+        y: 1
     }
 };
 
@@ -52,27 +52,6 @@ function draw() {
 }
 
 /**
- * Moves the paddle
- */
-function movePaddle(paddle) {
-
-}
-
-/**
- * Moves the ball passed in as a parameter
- */
-function moveBall(ball) {
-
-}
-
-/**
- * Bounces the provided ball off the provided paddle
- */
-function handleBounce(ball, paddle) {
-
-}
-
-/**
  * Draws the specified paddle on the canvas
  */
 function drawPaddle(paddle) {
@@ -82,6 +61,40 @@ function drawPaddle(paddle) {
     fill("pink");
     rect(paddle.x, paddle.y, paddle.width, paddle.height);
     pop();
+}
+
+/**
+ * Moves the paddle
+ */
+function movePaddle(paddle) {
+push()
+paddle.x = mouseX;
+pop()
+}
+
+/**
+ * Moves the ball passed in as a parameter
+ */
+function moveBall(ball) {
+push()
+ball.y += ball.velocity.y;
+pop()
+}
+
+/**
+ * Bounces the provided ball off the provided paddle
+ */
+function handleBounce(ball, paddle) {
+if (checkOverlap(ball,paddle) === true){ // check if the overlap happened
+  ball.velocity.y = ball.velocity.y*-1} // if the values are overlapping, reverse the direction
+
+  else if (ball.y<=0) {
+  ball.velocity.y = ball.velocity.y*-1} // if the y value hits 0, then reverse the direction
+
+  else if (ball.y>=height) { // if we miss the ball, then reset
+  ball.y = 20;
+  ball.velocity.y = 1;
+} 
 }
 
 /**
