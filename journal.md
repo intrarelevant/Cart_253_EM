@@ -3,7 +3,9 @@
 
 The first prototype is a simple ASCII drawing tool, using click and drag and mouse wheel functionality. It is fairly straightforward; I added in some randomization to allow the resulting drawing process to feel more sparkly.
 
-For the second prototype, I wanted to continue working with curves and having the curve appear at a specific point using math. Here, the tool acts as a music notation system, where the user Though I did not implement sound, the idea I have is the sound could play when the right point is reached, using the Bezier path function. This makes it a mix between a drawing tool and a sound making tool.
+For the second prototype, I wanted to continue working with curves and having the curve appear at a specific point using math. Here, the tool acts as a music notation system, where the user Though I did not implement sound, the idea I have is the sound could play when the right point is reached, using the Bezier path function. This will make it into a hybrid sound-drawing tool.
+
+
 
 
 

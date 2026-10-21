@@ -20,7 +20,7 @@ let myColors = {
 
 function setup() {
 createCanvas(windowHeight, windowHeight);
-frameRate(12) // slow the framerate for an animation feel
+frameRate(12) 
 background(myColors.bg.r, myColors.bg.g, myColors.bg.b); // apply the background color
 }
 
