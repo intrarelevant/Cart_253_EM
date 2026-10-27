@@ -4,6 +4,10 @@
 // This is a refactor of some code I created in week 2
 */
 
+// what do I need to refactor?
+// the rain segments
+// variables are not grouped by functions, but just various weights written out in the code
+// 
 
 "use strict";
 
@@ -16,26 +20,19 @@ let myColors = {
       r:18, g:69, b:89} // "dark teal"
 }
 
+let waveSize = {
+    start: {minw:75, maxw:200, minh: 20, maxh: 30}
+}
+
+let trigValues = { // I will use these values to control the scale of the scaling
+  s: {amp:20, speed:0.75}
+  }
+
 function setup() {
 createCanvas(windowHeight, windowHeight);
 frameRate(12) 
 background(myColors.bg.r, myColors.bg.g, myColors.bg.b); // apply the background color
 }
-
-let waveSize = {
-    start: {minw:75, maxw:200, minh: 20, maxh: 30}
-}
-
-/// REFERENCE FOR ME
-//Example: movingY = 400 + 20 * sin(frameCount * 0.05);
-//400 is the base position
-//20 is the movement  amplitude. <- defined here
-//0.05 controls the speed. <- defined here
-//sin(...) creates smooth, continuous movement (in the functions later
-
-let trigValues = { // I will use these values to control the scale of the scaling
-  s: {amp:20, speed:0.75}
-  }
 
 /// Draw starts and runs every frame
 function draw() {
@@ -84,3 +81,14 @@ line(mouseX-random(-20, 29),windowHeight*random(0.4,0.6),mouseX+random(-20, 29),
 line(mouseX-random(-20, 29),windowHeight*random(0.7,0.8),mouseX+random(-20, 29),windowHeight*random(0.6,0.8)) // horizon
 pop()
 }
+
+
+
+
+/// REFERENCE FOR ME
+//Example: movingY = 400 + 20 * sin(frameCount * 0.05);
+//400 is the base position
+//20 is the movement  amplitude. <- defined here
+//0.05 controls the speed. <- defined here
+//sin(...) creates smooth, continuous movement (in the functions later
+
