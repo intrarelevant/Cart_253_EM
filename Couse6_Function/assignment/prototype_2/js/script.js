@@ -1,23 +1,22 @@
 /**
  * Rain
- * Erica Mercier
 // This is a refactor of some code I created in week 2
 */
 
 // what do I need to refactor?
 // the rain segments
 // variables are not grouped by functions, but just various weights written out in the code
-// 
 
 "use strict";
+
+let rain1 = undefined;
+let rain2 = undefined;
 
 let myColors = {
     bg: { // background color
         r:1, g:22, b:30 },// "inkblack"
     wave: {
         r:89, g:131, b:146}, // "air force blue"
-    rain: {
-      r:18, g:69, b:89} // "dark teal"
 }
 
 let waveSize = {
@@ -28,20 +27,47 @@ let trigValues = { // I will use these values to control the scale of the scalin
   s: {amp:20, speed:0.75}
   }
 
+let weight ={
+    rdmRain: 20,
+    startY: 0.8,
+}
+
 function setup() {
 createCanvas(windowHeight, windowHeight);
 frameRate(12) 
 background(myColors.bg.r, myColors.bg.g, myColors.bg.b); // apply the background color
+
 }
 
 /// Draw starts and runs every frame
 function draw() {
 background(myColors.bg.r, myColors.bg.g, myColors.bg.b, 20); // apply the background color and but with low opacity to create feedback.
 cursor(CROSS); // i want to suggest to the user that the mouse position matters!
-drawRain()
-drawRainSegments()
-drawWave()
+rain1 = drawRain();
+rain2 = drawRain();
+drawRainSegments();
+drawWave();
 }
+
+function drawRain (){
+push()
+    let rain = {
+        color: {
+            r:18, g:69, b:89 
+        },
+        startX: mouseX+random(-weight.rdmRain, weight.rdmRain),
+        startY: windowHeight*weight.startY+random(-weight.rdmRain, weight.rdmRain),
+        endX: mouseX+random(-weight.rdmRain, weight.rdmRain),
+        endY: 0,
+    };
+strokeWeight(1);
+stroke(rain.color.r,rain.color.g,rain.color.b); 
+noFill()
+line(rain.startX, rain.startY, rain.endX, rain.endY);
+pop()
+}
+
+
 
 // create a circle at the mouse origin to look like the rain splatter
 function drawWave (){
@@ -55,15 +81,7 @@ pop()
 }
 
 // create a line pointing to the mouse origin to look like rain
-function drawRain (){
-push()
-strokeWeight(1);
-stroke(myColors.rain.r,myColors.rain.g,myColors.rain.b) // pick the colors
-noFill()
-line(mouseX+random(-20,20),windowHeight*0.8+random(-20,20),mouseX+random(-20,20),0)
-line(mouseX+random(-20,20),windowHeight*0.8+random(-20,20),mouseX+random(-20,20),0)
-pop()
-}
+
 
 // create a line pointing to the mouse origin to look like rain
 
