@@ -11,32 +11,23 @@
 
 let rain1 = undefined;
 let rain2 = undefined;
+let wave1 = undefined
 
 let myColors = {
     bg: { // background color
         r:1, g:22, b:30 },// "inkblack"
-    wave: {
-        r:89, g:131, b:146}, // "air force blue"
-}
 
-let waveSize = {
-    start: {minw:75, maxw:200, minh: 20, maxh: 30}
-}
-
-let trigValues = { // I will use these values to control the scale of the scaling
-  s: {amp:20, speed:0.75}
-  }
-
-let weight ={
-    rdmRain: 20,
-    startY: 0.8,
 }
 
 function setup() {
 createCanvas(windowHeight, windowHeight);
-frameRate(12) 
+frameRate(12);
 background(myColors.bg.r, myColors.bg.g, myColors.bg.b); // apply the background color
+}
 
+let weight = {
+    rdmRain: 20,
+    horizon: 0.8, // horizon line
 }
 
 /// Draw starts and runs every frame
@@ -45,47 +36,53 @@ background(myColors.bg.r, myColors.bg.g, myColors.bg.b, 20); // apply the backgr
 cursor(CROSS); // i want to suggest to the user that the mouse position matters!
 rain1 = drawRain();
 rain2 = drawRain();
+wave1 = drawWave();
 drawRainSegments();
 drawWave();
 }
 
-function drawRain (){
+function drawRain (){ // draw the mostly vertical blue lines that create the main rain effect.
 push()
     let rain = {
         color: {
-            r:18, g:69, b:89 
+            r:18, g:69, b:89, a:100, 
         },
         startX: mouseX+random(-weight.rdmRain, weight.rdmRain),
-        startY: windowHeight*weight.startY+random(-weight.rdmRain, weight.rdmRain),
+        startY: windowHeight*weight.horizon+random(-weight.rdmRain, weight.rdmRain),
         endX: mouseX+random(-weight.rdmRain, weight.rdmRain),
         endY: 0,
     };
 strokeWeight(1);
-stroke(rain.color.r,rain.color.g,rain.color.b); 
+stroke(rain.color.r,rain.color.g,rain.color.b,rain.color.a); 
 noFill()
 line(rain.startX, rain.startY, rain.endX, rain.endY);
 pop()
-}
+};
 
-
-
-// create a circle at the mouse origin to look like the rain splatter
+// create a circle at the mouse origin to form rain splatter
 function drawWave (){
 push()
+let wave = {
+        color: {
+        r:89, g:131, b:146, a:random(100,200)},
+        trigValues: {
+            amp:20, 
+            speed:0.75},
+        x: mouseX+random(-50,50),
+        y: windowHeight*weight.horizon,
+        w: random(75, 200),
+        h: random(20, 30),
+};
 strokeWeight(1);
-stroke(myColors.wave.r,myColors.wave.g,myColors.wave.b,random(100,200)) // pick the colors
+stroke(wave.color.r, wave.color.g, wave.color.b, wave.color.a)
 noFill()
-// I want the circles to have some random size but also ease / in out, so I use some trig functions
-ellipse(mouseX+random(-50,50), windowHeight*0.8+random(-10,10), (random(waveSize.start.minw, waveSize.start.maxw) + trigValues.s.amp * cos(frameCount*trigValues.s.speed) ), (random(waveSize.start.minh, waveSize.start.maxh)+ trigValues.s.amp * sin(frameCount*trigValues.s.speed)));
+ellipse(wave.x, wave.y, wave.w, wave.h);
 pop()
-}
-
+};
 // create a line pointing to the mouse origin to look like rain
 
-
-// create a line pointing to the mouse origin to look like rain
-
-function drawRainSegments(){
+function drawRainSegments()
+{
 push()
 stroke(myColors.bg.r, myColors.bg.g, myColors.bg.b, random(70,120)) // to blend into the background
 strokeWeight(random(30,50))
@@ -98,7 +95,7 @@ line(mouseX-random(-20, 29),windowHeight*random(0.25,0.5),mouseX+random(-20, 29)
 line(mouseX-random(-20, 29),windowHeight*random(0.4,0.6),mouseX+random(-20, 29),windowHeight*random(0.45,0.7))
 line(mouseX-random(-20, 29),windowHeight*random(0.7,0.8),mouseX+random(-20, 29),windowHeight*random(0.6,0.8)) // horizon
 pop()
-}
+};
 
 
 
