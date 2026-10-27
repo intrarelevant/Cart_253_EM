@@ -1,4 +1,7 @@
-# October 5th - Assignment - Conditionals - Thoughts on my Prototypes
+# October 27th - Functions
+
+
+# October 19th - Events
 
 
 The first prototype is a simple ASCII drawing tool, using click and drag and mouse wheel functionality. It is fairly straightforward; I added in some randomization to allow the resulting drawing process to feel more sparkly.
