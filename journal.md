@@ -1,5 +1,6 @@
 # October 27th - Functions
 
+My first prototype is a refactor of the rain simulation I did in week 2. 
 
 # October 19th - Events
 
