@@ -4,6 +4,7 @@
  * 
  * i did this in quite a hurried way last week.
  * so, i wanted to make it more flexible so that I could add / expand on it in the future, and add some new features.
+ * this week, I add a color picker and refactored the code.
  */
 
 "use strict";
@@ -48,11 +49,13 @@ function renderText() {
     textAlign(CENTER, CENTER);
     text(char, width / 2, height / 2);
     textFont('Times New Roman');
-
     blurText();
 }
 
-// handles the visual effect
+/** VISUAL EFFECTS */
+
+// handles the visual effects
+
 function shearText(){
   shearX(sliderShear.value()); 
   shearY(sliderShear.value());
@@ -62,6 +65,8 @@ function blurText(){
   filter(BLUR, sliderBlur.value());
 }
 
+
+/** SLIDERS */
 // create the sliders + sliders & user controls // 
 function sliderBlurr(){
   sliderBlur = createSlider(0, 25, 0);
@@ -75,11 +80,11 @@ function sliderShearr() {
   sliderShear.size(100);
 }
 
+
 function colorPickerr() {
   colorPicker = createColorPicker("#1E2019");
   colorPicker.position(10, height / 9 * 3);
-  colorPicker.size(100);
-
+  colorPicker.size(100)
 }
 
 // handle typing. 
