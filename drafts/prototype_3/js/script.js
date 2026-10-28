@@ -1,109 +1,77 @@
 /**
- * prototype for a typography system, reworked and refactored.
- * Erica Mercier
+ * Flies flies
+ * Pippin Barr
  * 
- * i did this in quite a hurried way last week.
- * so, i wanted to make it more flexible so that I could add / expand on it in the future, and add some new features.
- * this week, I add a color picker and refactored the code.
+ * A program for drawing flies on the canvas. The flies are stored
+ * in an array. We display them with a for...of loop
  */
 
 "use strict";
 
-//** calling variables so they exist *//
-// these will store the keyboard press and create sliders for user control 
-let keyPress;
-let char = 'A'; // starting character, this is the text written by the user.
-let charNum = 1; // starting number of characters is 1, because of A.
+// Our array of flies (specifically "fly data" really)
+// Each fly has a position and a size
+let flies = [
+    {
+        x: 100,
+        y: 125,
+        size: 10
+    },
+    {
+        x: 160,
+        y: 170,
+        size: 14
+    },
+    {
+        x: 180,
+        y: 50,
+        size: 5
+    }
+];
 
-let sliderBlur;
-let sliderShear;
-let colorPicker;
-
-//** color pallette *//
-const myColors = {
-  backgroundFull : "#F0EFF4",
-  }
-
-/** Setup create canvas & do some math on the base positions **/ 
+/**
+ * Create the canvas
+ */
 function setup() {
-  angleMode(DEGREES);
-  createCanvas(displayHeight*0.8, displayHeight*0.8); // square based on display height.
-  background(myColors.backgroundFull); // background
-  
-  // create the sliders
-  sliderBlurr();
-  sliderShearr();
-  colorPickerr();
-
+    // Let's make it tiny for some reason
+    createCanvas(200, 200);
 }
 
-function draw(){
-  renderText();
+/**
+ * Display the flies in the array
+ */
+function draw() {
+    background("#87ceed");
+
+    // Display each fly in the array
+    for (let fly of flies) {
+        drawFly(fly);
+    }
 }
 
-function renderText() {
-  background(myColors.backgroundFull); // reset the background when a slid
-    shearText();
-    fill(colorPicker.value());
-    textSize(height / char.length);  // set the size of the text to be appropriate for the viewer size.
-    textAlign(CENTER, CENTER);
-    text(char, width / 2, height / 2);
-    textFont('Times New Roman');
-    blurText();
+/**
+ * Draws the provided fly to the canvas
+ */
+function drawFly(fly) {
+    push();
+    noStroke();
+    fill(0);
+    ellipse(fly.x, fly.y, fly.size);
+    pop();
 }
 
-/** VISUAL EFFECTS */
-
-// handles the visual effects
-
-function shearText(){
-  shearX(sliderShear.value()); 
-  shearY(sliderShear.value());
+function createFly() {
+    // Generate the random fly
+    let fly = {
+        x: random(0, width),
+        y: random(0, height),
+        size: random(10, 20),
+        buzziness: random(2, 8)
+    };
+    // Return the random fly
+    return fly;
 }
 
-function blurText(){
-  filter(BLUR, sliderBlur.value());
+function keyPressed() {
+    let fly = createFly();
+    flies.push(fly);
 }
-
-
-/** SLIDERS */
-// create the sliders + sliders & user controls // 
-function sliderBlurr(){
-  sliderBlur = createSlider(0, 25, 0);
-  sliderBlur.position(10, height / 9);
-  sliderBlur.size(100);
-}
-
-function sliderShearr() {
-  sliderShear = createSlider(-10, 10, 0);
-  sliderShear.position(10, height / 9 * 2);
-  sliderShear.size(100);
-}
-
-
-function colorPickerr() {
-  colorPicker = createColorPicker("#1E2019");
-  colorPicker.position(10, height / 9 * 3);
-  colorPicker.size(100)
-}
-
-// handle typing. 
-function keyTyped() {
-if (/^[a-z0-9 ]$/i.test(key)) {
-    char += key.toUpperCase();
-    charNum = char.length;
-    renderText();
-  }
-}
-
-function keyPressed(event) {
-  if (event.key === "Backspace") {
-    event.preventDefault();
-
-    char = char.slice(0, -1);
-    charNum = char.length;
-    renderText();
-    return false;
-  }
-}
-

@@ -8,9 +8,9 @@ The second prototype is a very simple animation I created to become more familia
 
 ![functions process photo](assets/functions_process.jpg)
 
+For the last prototype, I did another refactor, this type of the typography tool. The way I initially created it was not very scaleable. So, I reorganized each manipulation into a specific function. I also added a color picker as an example of better configurability. With this week's work on arrays, I think I will experiment with per-letter transformation.
 
 # October 19th - Events
-
 
 The first prototype is a simple ASCII drawing tool, using click and drag and mouse wheel functionality. It is fairly straightforward; I added in some randomization to allow the resulting drawing process to feel more sparkly.
 
