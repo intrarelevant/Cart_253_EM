@@ -1,6 +1,13 @@
 # October 27th - Functions
 
-My first prototype is a refactor of the rain simulation I did in week 2. 
+This week, I focused mostly on refactoring code as I want to be able to work more with parameters, and discovering new functions available using p5. 
+
+My first prototype is a refactor of the rain simulation I did in week 3, where I focused on creating new functions for the various parts of the code, passing arguments, and so on. Although the code isn't necessarily less lengthy, it certainly is easier to understand and work with, allowing for adjustments of the visual effect easily and far more quickly. What I found more challenging was that it felt more like an adjustment in a way of thinking. The emphasis falls much more on the logic, and then the visual effect can come out of it. 
+
+The second prototype is a very simple animation I created to become more familiar with noise() function, as I have been using random() quite frequently in my code. I also wanted to use createShape() to be able to make more complex visual effects. Here, the noise is used to adjust the position of an ellipse, which is generated using a loop. I should disclose that I used AI to create the initial loop code, but I did take the time to go through it and understand what each piece was doing. I then refactored that code, finding which variables would produce an interesting visual effect. In my exploration of the p5 reference, I also encountered the pixelDensity() function, which I use here to produce a pixellated effect. I also had to add some css I'd found on stackoverflow to avoid interpolation by the browser. Here is a process photo. I want to use something similar for a future prototype. 
+
+![functions process photo](assets/functions_process.jpg)
+
 
 # October 19th - Events
 

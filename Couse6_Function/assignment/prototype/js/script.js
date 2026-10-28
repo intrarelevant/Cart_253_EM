@@ -70,7 +70,6 @@ ellipse(wave.x, wave.y, wave.w, wave.h);
 pop()
 };
 
-
 function drawRainSegments() {
     push();
     stroke(shared.bg.r, shared.bg.g, shared.bg.b, shared.bg.a * 3);
