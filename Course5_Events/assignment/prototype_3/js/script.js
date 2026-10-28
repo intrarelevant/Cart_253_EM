@@ -75,6 +75,6 @@ function keyPressed(event) {
 }
 
 function draw() {
-   const s = sliderShear.value();
+  const s = sliderShear.value();
   if (s != 0) {shearX(s); shearY(s);}
 }
