@@ -1,12 +1,13 @@
 /**
  * Erica Mercier
-// This is a refactor of some code I created in week 2
+// 'perfect spiral'
+// simple animation of a spinning & distorted series of circles.
 */
 
 "use strict";
 
 let shared = {
-    bg: 245, // background color
+    bg: 200, // background color
 };
 
 function setup() {
@@ -14,22 +15,34 @@ function setup() {
     frameRate(12);
     cursor(CROSS);
     background(shared.bg); 
+    pixelDensity(0.22);
+
 };
 
 function draw() {
-    translate(width / 2, height / 2);
+translate(width/3, height/3);
+    let t = frameCount * 0.01; // slowly rotate the shape
+        rotate(t);
+    background(shared.bg); 
     drawCircle();
-};
+}
 
 function drawCircle(){
 // drawCircles uses (radius, jitter, stroke, noiseScale, seed)
-drawCircles(height/2, 50, height/8, 0.8, 2)
-drawCircles(height/3, 35, height/13, 0.8, 2)    
-drawCircles(height/5, 35, height/21, 0.8, 2)
-drawCircles(height/8, 35, height/34, 0.8, 2)
-drawCircles(height/13, 35, height/55, 0.8, 2)
-drawCircles(height/21, 35, height/89, 0.8, 2)
-drawCircles(height/34, 35, height/144, 0.8, 2)
+stroke(100)
+const circleSeed = 99; // set the same seed for all sections
+const circleJitter = 100; // set the same amount of jitter
+
+drawCircles(height, circleJitter, height/5, 2, circleSeed)
+drawCircles(height/2, circleJitter, height/8, 0.8, circleSeed)
+drawCircles(height/3, circleJitter, height/13, 0.8, circleSeed)    
+drawCircles(height/5, circleJitter, height/21, 0.8, circleSeed)
+drawCircles(height/8, circleJitter, height/34, 0.8, circleSeed)
+drawCircles(height/13, circleJitter, height/55, 0.8, circleSeed)
+drawCircles(height/21, circleJitter, height/89, 0.8, circleSeed)
+drawCircles(height/34, circleJitter, height/144, 0.8, circleSeed)
+drawCircles(height/55, circleJitter, height/233, 0.8, circleSeed)
+drawCircles(height/89, circleJitter, height/233, 0.8, circleSeed)
 };
 
 function drawCircles (radius, jitter, stroke, noiseScale, seed) {
