@@ -26,14 +26,20 @@
     size: 5,
     sizeRdm: 1,
     pos: 0.25, // % position of the dot within the domino
-    posRdm: 4, // weight of randomness within the domino
+    posRdm: 2, // weight of randomness within the domino
+  }
+
+  let lines ={
+    posRdm:2,
   }
 
  let colors = {
-  bck: '#8d909b',
+  bck: '#DBD3D8',
   lines:'#6A7062',
   dots: '#3E442B',
  }
+
+
 
   // Create the canvas
 
@@ -57,9 +63,9 @@
   };
 
   function draw() {
+    drawGrid();
+    drawGrid2(); // this is a more solid grid to avoid too much detail being lost to blur
     drawDotArray();
-    drawVerticalLines();
-    drawHorizontalLines()
   };
 
   function drawDotArray() {
@@ -67,32 +73,46 @@
       for (let x = 0; x < cols; x++)
       {
         push();
-        noFill();
-        stroke (colors.dots);
+        fill(colors.dots);
+        strokeWeight(1);
         ellipse ((x * cellWidth + 0.5*cellWidth+randomGaussian(+-dots.posRdm)), (y * cellHeight + 0.25*cellHeight+randomGaussian(+-dots.posRdm)), dots.size, dots.size);
         ellipse ((x * cellWidth + 0.5*cellWidth+randomGaussian(+-dots.posRdm)), (y * cellHeight + 0.75*cellHeight+randomGaussian(+-dots.posRdm)), dots.size, dots.size);
         pop();
       }
+      filter(BLUR,0.002);
     }
   };
 
-  function drawVerticalLines() {
+
+  function drawGrid() {
     push();
     stroke(colors.lines);
     for (let x = 0; x < cols; x++) {
       const lineX = (x + 1) * cellWidth;
-      line(lineX, 0, lineX, height);
-    
+      line(lineX, 0+randomGaussian(lines.posRdm), lineX, height-randomGaussian(lines.posRdm));
+      filter(BLUR, 0.001);
+    }
+
+    for (let y = 0; y < rows; y++) {
+      const lineY = (y + 1) * cellHeight;
+      line(0+randomGaussian(lines.posRdm), lineY, width-randomGaussian(lines.posRdm), lineY);
+      filter(BLUR, 0.001);
     }
     pop();
   }
 
-  function drawHorizontalLines() {
-    push()
+    function drawGrid2() {
+    push();
     stroke(colors.lines);
+    stroke()
+    for (let x = 0; x < cols; x++) {
+      const lineX = (x + 1) * cellWidth;
+      line(lineX, 0+randomGaussian(lines.posRdm), lineX+randomGaussian(lines.posRdm), height-randomGaussian(lines.posRdm));
+    }
+
     for (let y = 0; y < rows; y++) {
       const lineY = (y + 1) * cellHeight;
-      line(0, lineY, width, lineY);
+      line(0+randomGaussian(lines.posRdm), lineY+randomGaussian(lines.posRdm), width-randomGaussian(lines.posRdm), lineY-randomGaussian(lines.posRdm));
     }
     pop();
   }
