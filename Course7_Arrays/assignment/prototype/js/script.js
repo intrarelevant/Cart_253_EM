@@ -13,17 +13,59 @@
  */
 
 /**
- * Create the canvas and the arrays needed for each type of line.
+ * Create the canvas and the array needed for the grid 
  */ 
 
-let horizontalLines = [];
-let verficalLines =[];
-let dots = [];
+
+let grid = [];
+const cols = 9;
+const rows = 5;
+
+let dots = {
+  size: 10,
+  sizeRdm: 1,
+  pos: 0.25, // % position of the dot within the domino
+  posRdm: 5, // weight of randomness within the domino
+}
+
+// Create the canvas
 
 function setup() {
-  // Create the canvas
   createCanvas(windowHeight*0.8, windowHeight*0.8);
-  background(0); 
+  background(200); 
+
+// create my grid values
+  for (let y=0; y < rows; y++) {
+    let row =[];
+
+// add a cell to the row for each column
+  for (let x=0; x < cols; x++) {
+    row.push(0)
+  }
+  // add the completed row to the grid 
+  grid.push(row);
+  }
+
+  noLoop(); // this is a still image
 }
 
 
+function draw() {
+
+  drawDots()
+}
+
+function drawDots() {
+  const cellWidth = width/cols;
+  const cellHeight = height/rows;
+
+  for (let y=1; y < rows-1; y++){
+    for (let x = 0; x < cols; x++)
+    {
+      noFill();
+      stroke (1);
+      ellipse ((x * cellWidth + 0.5*cellWidth+random(-dots.posRdm, dots.posRdm)), (y * cellHeight + 0.25*cellHeight+random(-dots.posRdm, dots.posRdm)), random(dots.size-dots.sizeRdm), random(dots.size+dots.sizeRdm));
+      ellipse ((x * cellWidth + 0.5*cellWidth+random(-dots.posRdm, dots.posRdm)), (y * cellHeight + 0.75*cellHeight+random(-dots.posRdm, dots.posRdm)), random(dots.size-dots.sizeRdm), random(dots.size+dots.sizeRdm));
+    }
+  }
+}
