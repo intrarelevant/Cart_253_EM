@@ -18,8 +18,8 @@
 
 
 let grid = [];
-const cols = 9;
-const rows = 5;
+const cols = 12;
+const rows = 9;
 
 let dots = {
   size: 10,
@@ -33,7 +33,6 @@ let dots = {
 function setup() {
   createCanvas(windowHeight*0.8, windowHeight*0.8);
   background(200); 
-
 // create my grid values
   for (let y=0; y < rows; y++) {
     let row =[];
@@ -45,27 +44,25 @@ function setup() {
   // add the completed row to the grid 
   grid.push(row);
   }
-
   noLoop(); // this is a still image
 }
 
 
 function draw() {
-
-  drawDots()
+  drawDotArray();
 }
 
-function drawDots() {
+function drawDotArray() {
   const cellWidth = width/cols;
   const cellHeight = height/rows;
 
   for (let y=1; y < rows-1; y++){
     for (let x = 0; x < cols; x++)
     {
-      noFill();
+      fill(0);
       stroke (1);
-      ellipse ((x * cellWidth + 0.5*cellWidth+random(-dots.posRdm, dots.posRdm)), (y * cellHeight + 0.25*cellHeight+random(-dots.posRdm, dots.posRdm)), random(dots.size-dots.sizeRdm), random(dots.size+dots.sizeRdm));
-      ellipse ((x * cellWidth + 0.5*cellWidth+random(-dots.posRdm, dots.posRdm)), (y * cellHeight + 0.75*cellHeight+random(-dots.posRdm, dots.posRdm)), random(dots.size-dots.sizeRdm), random(dots.size+dots.sizeRdm));
+      ellipse ((x * cellWidth + 0.5*cellWidth+random(-dots.posRdm, dots.posRdm)), (y * cellHeight + 0.25*cellHeight+random(-dots.posRdm, dots.posRdm)), dots.size, dots.size);
+      ellipse ((x * cellWidth + 0.5*cellWidth+random(-dots.posRdm, dots.posRdm)), (y * cellHeight + 0.75*cellHeight+random(-dots.posRdm, dots.posRdm)), dots.size, dots.size);
     }
   }
 }
