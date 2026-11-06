@@ -8,7 +8,7 @@ The second artist is Toshitaka Aoyagi, a designer and architect. The images he m
 
 ![arrays process photo](assets/arrays_process.jpg)
 
-
+My final prototype is a bit rushed and not based on a painterly reference. I wanted to create an array of shapes that change in size relative to the centre of the image. I would need to rework this by calculating the angle of each point based on its relative position to the centre to make it a bit more compelling, and add more variation to the shapes to produce a pattern. 
 
 # October 27th - Functions
 
