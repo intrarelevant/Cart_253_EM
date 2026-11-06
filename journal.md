@@ -1,3 +1,15 @@
+# November 6th - Arrays
+
+I have focused mainly on reproducing visual artworks by various artists this week. The main challenge has been in terms of adding the right level of 'flaw' and distortion to create the desired visual effect, especially to reproduce painting.
+
+The first is Agnes Martin, a minimalist painter whose work lends itself quite nicely to code. It is a simple domino-shaped grid with various points inside of the array. Through my experimentation, I found that applying 'layers' of blur, inside of the looping array, created a very striking effect. As the program draws each set of circles, it blurs the entire image, and so there is an impression of motion blur, almost. The disadvantage of course is the amount of resources used by the GPU, which means the program takes somewhat longer to load. For this reason, I settled on a static image.
+
+The second artist is Toshitaka Aoyagi, a designer and architect. The images he makes are very simple and minimalistic but employ feedback effects. I focused on creating systems that create feedback effects. Having used the blur filter in my previous image, I wanted to employ it again, but in motion. I settled for having the blur applied at the 'reset' point of the image rather than on each frame. Over time, it leaves a somewhat beautiful gradient on the canvas. I later constrained the points. 
+
+![arrays process photo](assets/arrays_process.jpg)
+
+
+
 # October 27th - Functions
 
 This week, I focused mostly on refactoring code as I want to be able to work more with parameters, and discovering new functions available using p5. 
