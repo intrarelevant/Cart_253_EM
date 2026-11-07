@@ -1,13 +1,15 @@
 # Course 7 - Arrays Challenge
 
+- [Prototype 1, Agnes Martin](https://intrarelevant.github.io/Cart_253_EM/Course7_Arrays/assignment/prototype/) + [(Code)](https://github.com/intrarelevant/Cart_253_EM/blob/main/Course7_Arrays/assignment/prototype/js/script.js), 
+Other Class 7, Arrays, prototypes:
+
+
+Other prototypes: 
+
+- [Prototype 2, Aoyagi](https://intrarelevant.github.io/Cart_253_EM/Course7_Arrays/assignment/prototype_2/) + [(Code)](https://github.com/intrarelevant/Cart_253_EM/blob/main/Course7_Arrays/assignment/prototype_2/js/script.js), 
+- [Prototype 3, scattered points](https://intrarelevant.github.io/Cart_253_EM/Course7_Arrays/assignment/prototype_3/) + [(Code)](https://github.com/intrarelevant/Cart_253_EM/blob/main/Course7_Arrays/assignment/prototype_3/js/script.js)
+
 
 ## Attribution
 
 > - This project uses [p5.js](https://p5js.org).
-> - Following instructions [here](https://pippinbarr.com/cart253/assignments/challenges/conditionals/)
-
-## License
-
-This bit could include the license you want to apply to your work. For example:
-
-> This project is licensed under a Creative Commons Attribution ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)) license with the exception of libraries and other components with their own licenses.
