@@ -54,6 +54,7 @@
       text(carName+' '+wordName, width / 2, height / 2);
       textSize(12);
       text(lang, width/2, 100);
+      text("using first browser preference language", width/2, height/4*3);
       pop();
   }
 

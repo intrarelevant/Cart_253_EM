@@ -18,6 +18,7 @@ This is E_M's coursework and journal for CART253; I'll be using this page as a r
 
 
 # In-Class Challenges
+- Class 8: [bad car name generator](https://intrarelevant.github.io/Cart_253_EM/Course8_data/challenge/index.html)
 - Class 7: [ball array](https://intrarelevant.github.io/Cart_253_EM/Course7_Arrays/challenge/index.html)
 - Class 6: [bouncy bonanza](https://intrarelevant.github.io/Cart_253_EM/Course6_Function/challenge/index.html)
 - Class 4: [do anything you lose](https://intrarelevant.github.io/Cart_253_EM/Course4_Events/challenge/index.html)
