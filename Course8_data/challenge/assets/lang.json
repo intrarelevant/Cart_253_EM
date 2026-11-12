@@ -1,0 +1,8 @@
+{
+    "description":"Instructions to use my amazing program.",
+    "instructions":
+    {
+        "en": "Click to generate a car name.",
+        "fr": "Cliquez pour générer un nouveau nom."
+    }
+}
