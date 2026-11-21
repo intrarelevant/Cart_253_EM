@@ -23,6 +23,7 @@ The following transformations will be able to be applied at the level of the ent
 
 - Apply some noisiness / disturbance
 - Shear the text
+- Scale X, Y
 - Select the font family
 - Apply a grid layout or a line layout
 - Interrupt the text via an item the background color (eg. applying an array of horizontal lines)
