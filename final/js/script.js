@@ -1,80 +1,109 @@
-  /**
-   * Terrible New Car
-   * Pippin Barr
-   * 
-   * A program to generate new car model names using dinosaurs.
-   * 
-   * Uses:
-   * Darius Kazemi's corpora repository
-   * https://github.com/dariusk/corpora/tree/master
-   */
+/**
+ * prototype for a typography system, reworked and refactored.
+ * Erica Mercier
+ * 
+ * i did this in quite a hurried way last week.
+ * so, i wanted to make it more flexible so that I could add / expand on it in the future, and add some new features.
+ * this week, I add a color picker and refactored the code.
+ */
 
-  "use strict";
+"use strict";
 
-  let carData = undefined;
-  let wordData = undefined;
-  let langData = undefined;
-  let lang = undefined;
-  let userLang
+//** calling variables so they exist *//
+// these will store the keyboard press and create sliders for user control 
+let keyPress;
+let char = 'A'; // starting character, this is the text written by the user.
+let charNum = 1; // starting number of characters is 1, because of A.
 
+let sliderBlur;
+let sliderShear;
+let colorPicker;
 
-  // Starts with the instruction
-  let carName = "Click to generate a car name.";
-  let wordName = "";
-
-
-  /**
-   * Load the car and dinosaur data
-   */
-  async function preload() {
-    carData = await (loadJSON("assets/cars.json"));
-    wordData = await (loadJSON("assets/passages.json"));
-    langData = await (loadJSON("assets/lang.json"))
+//** color pallette *//
+const myColors = {
+  backgroundFull : "#F0EFF4",
   }
 
-  /**
-   * Create the canvas
-  */
-  async function setup() {
-      createCanvas(600, 400);
-      await preload();
-      userLang = navigator.language || navigator.userLanguage; 
-      getLanguage();
-  }
-
-  /**
-   * Display the current main text (either instructions or a car)
-  */
-  function draw() {
-      background(30);
-      push();
-      fill("pink");
-      textAlign(CENTER, CENTER);
-      textSize(32);
-      text(carName+' '+wordName, width / 2, height / 2);
-      textSize(12);
-      text(lang, width/2, 100);
-      text("using first browser preference language", width/2, height/4*3);
-      pop();
-  }
-
-  /**
-   * Generate a new car name
-   */
-  function mousePressed() {
-    carName = random(carData.cars);
-    wordName = random(wordData.passages);
-  }
-
+/** Setup create canvas & do some math on the base positions **/ 
+function setup() {
+  angleMode(DEGREES);
+  createCanvas(displayHeight*0.8, displayHeight*0.8); // square based on display height.
+  background(myColors.backgroundFull); // background
   
-  function getLanguage() {
-    if (userLang === "fr-FR" || userLang === "fr" || userLang === "fr-CA"  ){
-      lang = "fr";
-      carName = langData.instructions[lang];
-    }
-    else if (userLang === "en" || userLang === "en-US" || userLang === "en-CA" || userLang === "en-GB") {
-      lang = "en";
-      carName = langData.instructions[lang];
-    }
+  // create the sliders
+  sliderBlurr();
+  sliderShearr();
+  colorPickerr();
+
+}
+
+function draw(){
+  renderText();
+}
+
+function renderText() {
+  background(myColors.backgroundFull); // reset the background when a slid
+    shearText();
+    fill(colorPicker.value());
+    textSize(height / char.length);  // set the size of the text to be appropriate for the viewer size.
+    textAlign(CENTER, CENTER);
+    text(char, width / 2, height / 2);
+    textFont('Times New Roman');
+    blurText();
+}
+
+/** VISUAL EFFECTS */
+
+// handles the visual effects
+
+function shearText(){
+  shearX(sliderShear.value()); 
+  shearY(sliderShear.value());
+}
+
+function blurText(){
+  filter(BLUR, sliderBlur.value());
+}
+
+
+/** SLIDERS */
+// create the sliders + sliders & user controls // 
+function sliderBlurr(){
+  sliderBlur = createSlider(0, 25, 0);
+  sliderBlur.position(10, height / 9);
+  sliderBlur.size(100);
+}
+
+function sliderShearr() {
+  sliderShear = createSlider(-10, 10, 0);
+  sliderShear.position(10, height / 9 * 2);
+  sliderShear.size(100);
+}
+
+
+function colorPickerr() {
+  colorPicker = createColorPicker("#1E2019");
+  colorPicker.position(10, height / 9 * 3);
+  colorPicker.size(100)
+}
+
+// handle typing. 
+function keyTyped() {
+if (/^[a-z0-9 ]$/i.test(key)) {
+    char += key.toUpperCase();
+    charNum = char.length;
+    renderText();
   }
+}
+
+function keyPressed(event) {
+  if (event.key === "Backspace") {
+    event.preventDefault();
+
+    char = char.slice(0, -1);
+    charNum = char.length;
+    renderText();
+    return false;
+  }
+}
 
