@@ -16,14 +16,11 @@ let sliderShear;
 let colorPicker;
 let colorPalette;
 
-function preload() {
-    colorPalette = loadJSON("assets/colors.json");
-    () => console.log("Loaded colors.json:", colorPalette),
-    (error) => console.error("Could not load colors.json:", error)
-  }
 
 /** Setup create canvas & do some math on the base positions **/ 
-function setup() {
+async function setup() {
+  colorPalette = await loadJSON("assets/colors.json");
+
   angleMode(DEGREES);
   createCanvas(displayHeight*0.95, displayHeight*0.95); // square based on display height.
   background(255); // background
@@ -81,12 +78,14 @@ function sliderShearr() {
 
 function colorPickerr() {
   colorPicker = createSelect();
+  colorPicker.position(10, height / 9 * 3);
 
   for (const name of Object.keys(colorPalette.colors)) {
     colorPicker.option(name);
   }
   colorPicker.selected("Default");
   colorPicker.changed(renderText);
+  
 }
 
 //* User Controls */
