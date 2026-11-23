@@ -1,10 +1,6 @@
 /**
  * prototype for a typography system, reworked and refactored.
  * Erica Mercier
- * 
- * i did this in quite a hurried way last week.
- * so, i wanted to make it more flexible so that I could add / expand on it in the future, and add some new features.
- * this week, I add a color picker and refactored the code.
  */
 
 "use strict";
@@ -20,22 +16,22 @@ let sliderShear;
 let colorPicker;
 let colorPalette;
 
-//** color pallette *//
-const myColors = {
-  backgroundFull : "#F0EFF4",
+function preload() {
+    colorPalette = loadJSON("assets/colors.json");
+    () => console.log("Loaded colors.json:", colorPalette),
+    (error) => console.error("Could not load colors.json:", error)
   }
 
 /** Setup create canvas & do some math on the base positions **/ 
 function setup() {
   angleMode(DEGREES);
   createCanvas(displayHeight*0.95, displayHeight*0.95); // square based on display height.
-  background(myColors.backgroundFull); // background
+  background(255); // background
   
   // create the sliders
   sliderBlurr();
   sliderShearr();
   colorPickerr();
-  colorPalettee();
 }
 
 function draw(){
@@ -43,9 +39,10 @@ function draw(){
 }
 
 function renderText() {
-  background(myColors.backgroundFull); // reset the background when a slid
+    const palette = colorPalette.colors[colorPicker.value()];
+    background(palette.background); // reset the background when a slider runs
     shearText();
-    fill(colorPicker.value());
+    fill(palette.text);
     textSize(height / char.length);  // set the size of the text to be appropriate for the viewer size.
     textAlign(CENTER, CENTER);
     text(char, width / 2, height / 2);
@@ -83,13 +80,13 @@ function sliderShearr() {
 
 
 function colorPickerr() {
-  colorPicker = createColorPicker("#1E2019");
-  colorPicker.position(10, height / 9 * 3);
-  colorPicker.size(100)
-}
+  colorPicker = createSelect();
 
-function colorPalettee() {
-
+  for (const name of Object.keys(colorPalette.colors)) {
+    colorPicker.option(name);
+  }
+  colorPicker.selected("Default");
+  colorPicker.changed(renderText);
 }
 
 //* User Controls */
