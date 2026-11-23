@@ -18,6 +18,7 @@ let charNum = 1; // starting number of characters is 1, because of A.
 let sliderBlur;
 let sliderShear;
 let colorPicker;
+let colorPalette;
 
 //** color pallette *//
 const myColors = {
@@ -34,7 +35,7 @@ function setup() {
   sliderBlurr();
   sliderShearr();
   colorPickerr();
-
+  colorPalettee();
 }
 
 function draw(){
@@ -82,6 +83,12 @@ function sliderShearr() {
 
 
 function colorPickerr() {
+  colorPicker = createColorPicker("#1E2019");
+  colorPicker.position(10, height / 9 * 3);
+  colorPicker.size(100)
+}
+
+function colorPalettee() {
   colorPicker = createColorPicker("#1E2019");
   colorPicker.position(10, height / 9 * 3);
   colorPicker.size(100)

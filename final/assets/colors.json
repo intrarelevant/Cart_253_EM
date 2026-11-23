@@ -1,0 +1,26 @@
+{
+    "description":"List of color palettes",
+    "colors":
+    {
+        "Default": {
+            "text": "#131200",
+            "background": "#BFBDC1"
+        },
+        "Salmon with Sage": {
+            "text": "#E9806E",
+            "background": "#C0C781"
+        },
+        "Raspberry": {
+            "text": "#DB2955",
+            "background": "#9DA39A"
+        },
+        "Lettuce": {
+            "text": "#B8B42D",
+            "background": "#3E363F"
+        },
+        "Chestnut": {
+            "text": "#823329",
+            "background": "#BFB8AD"
+        },
+    }
+}
