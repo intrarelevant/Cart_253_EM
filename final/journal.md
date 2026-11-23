@@ -5,7 +5,7 @@
 My first step to this project is to define my objectives. Basing myself on my past prototypes, I will create a typography tool that can work off a short sentence. The goal is to allow the user to create abstract or more legible 
 
 ## Goals
-The user will 
+The user will be able to create and modify simple typographic effects.
 
 ## Features
 

@@ -1,10 +1,9 @@
-# Course 7 - Arrays Challenge
+# Final Project - Typography tool 
 
 
 ## Attribution
 
 > - This project uses [p5.js](https://p5js.org).
-> - Following instructions [here](https://pippinbarr.com/cart253/assignments/challenges/conditionals/)
 
 ## License
 

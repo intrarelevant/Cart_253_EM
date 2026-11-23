@@ -27,7 +27,7 @@ const myColors = {
 /** Setup create canvas & do some math on the base positions **/ 
 function setup() {
   angleMode(DEGREES);
-  createCanvas(displayHeight*0.8, displayHeight*0.8); // square based on display height.
+  createCanvas(displayHeight*0.95, displayHeight*0.95); // square based on display height.
   background(myColors.backgroundFull); // background
   
   // create the sliders
@@ -87,6 +87,7 @@ function colorPickerr() {
   colorPicker.size(100)
 }
 
+//* User Controls */
 // handle typing. 
 function keyTyped() {
 if (/^[a-z0-9 ]$/i.test(key)) {
@@ -96,6 +97,7 @@ if (/^[a-z0-9 ]$/i.test(key)) {
   }
 }
 
+//handle backspace
 function keyPressed(event) {
   if (event.key === "Backspace") {
     event.preventDefault();
