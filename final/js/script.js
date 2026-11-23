@@ -89,9 +89,7 @@ function colorPickerr() {
 }
 
 function colorPalettee() {
-  colorPicker = createColorPicker("#1E2019");
-  colorPicker.position(10, height / 9 * 3);
-  colorPicker.size(100)
+
 }
 
 //* User Controls */
